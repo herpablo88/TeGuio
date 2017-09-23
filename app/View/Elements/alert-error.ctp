@@ -1,0 +1,1 @@
+<script>$.growl.error({message:'<?=$message?>','title':'Ups!'});</script>

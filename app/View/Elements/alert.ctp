@@ -1,0 +1,1 @@
+v<script>$.growl.notice({message:'<?=$message?>','title':'Bien!'});</script>
