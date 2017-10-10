@@ -1,0 +1,23 @@
+uso:
+https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api
+
+key:
+2bffcc5dc60e42478b4bd4c92b177d50
+
+Endpoint:
+https://westeurope.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
+
+JSON de prueba:
+
+ {
+        "documents": [
+            {
+                "language": "es",
+                "id": "1",
+                "text": "Hablaron del rol de la Argentina como presidente del G-20, la educación y, sobre el final, llegó una pregunta incómoda para el Gobierno. El líder el líder de U2, Bono, lo consultó al presidente Mauricio Macri por la investigación sobre la desaparición de Santiago Maldonado."
+            }
+         ]
+ }
+
+
+
