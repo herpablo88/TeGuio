@@ -20,7 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
-
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Application Controller
  *
@@ -37,23 +37,29 @@ App::uses('CakeEmail', 'Network/Email');
 class AppController extends Controller
 {
     public $components = array(
-          'Session',
-         'Paginator',
+        'Session',
+        'Paginator',
         'Auth' => array(
             'authenticate' => array(
-                'Basic'
+                'Basic', 
+                'Form' => array(
+                     'userModel' => 'Login',
+                        'fields' => array(
+                            'dni' => '12345',
+                            'contraseña' => '12345',
+                        )
+                )
             ),
             'loginRedirect' => array(
-                'controller' => 'home',
+                'controller' => 'Pages',
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
-                'controller' => 'home',
+                'controller' => 'Pages',
                 'action' => 'index'
             ),
             'authorize' => array('Controller')
         )
-
     );
     
 

@@ -2,9 +2,9 @@
     <div class="container">
         <section class="content-header" style="padding-top:74px">
             <ol class="breadcrumb">
-               <li class="active"><a href="<?=Router::url('/preguntas',true)?>">Preguntas</a></li>
+               <li class="active"><a href="<?=Router::url('/usuariojr',true)?>">UsuarioJr</a></li>
             </ol>
-            <h3 class="box-title">Preguntas</h3>
+            <h3 class="box-title">Usuarios a Cargo</h3>
         </section>
 
             <!-- Main content -->
@@ -24,26 +24,36 @@
                 <table class="table table-hover">
                     <tbody>
                         <tr>
-                            <th>Listado</th>
-                            <th></th>
+                            <th>Dni</th>
+                            <th>Nombre Apellido</th>
+                            <th>Cargar Cv</th>
+                            <th>Historico</th>
                         </tr>
 
                         <?php foreach($items as $item): ?>
 
-                        <tr>
+                        <tr style="text-align: -webkit-left;">
                         <td><?=$item[$model]['id']?></td>
-                        <td><?=$item[$model]['descripcion']?></td>
+                        <td><?=$item[$model]['nombre']." ".$item[$model]['apellido']?></td>
+                         
+                        <td> 
+                           <span class="btn btn-warning btn-xs" action-redirect btn-controller='CvsUsuarioJr' btn-action='edit' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon  glyphicon-list-alt'></span></span> 
+                        </td>
+
+                        <td> 
+                           <span class="btn btn-warning btn-xs" action-redirect btn-controller='Preguntas' btn-action='index' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon glyphicon-comment'></span></span> 
+                        </td>
 
                         <td>
-                        <span class="btn btn-warning btn-xs" action-redirect btn-controller='preguntas' btn-action='edit' btn-data="<?=$item[$model]['id']?>"><span class='fa fa-pencil'></span></span>
+                        <span class="btn btn-warning btn-xs" action-redirect btn-controller='usuariojr' btn-action='edit' btn-data="<?=$item[$model]['id']?>"><span class='fa fa-pencil'></span></span>
 
                         <span class="btn btn-danger btn-xs"
                         action-modal='true'
                         modal-class='modal-danger'
-                        modal-title='Eliminar Pregunta?'
-                        modal-text='¿Estas seguro que deseas borrar esta pregunta?'
+                        modal-title='Eliminar Usuario a cargo?'
+                        modal-text='¿Estas seguro que deseas borrar?'
                         object-id="<?=$item[$model]['id']?>"
-                        object-controller="preguntas"
+                        object-controller="usuariojr"
                         ><span class='fa fa-times-circle'></span>
                         </span>
                         </td>

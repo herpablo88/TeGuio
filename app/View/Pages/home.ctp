@@ -1,230 +1,118 @@
-<?php
-/**
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
+ <?php
+	 echo $this->Html->css('chat', array('inline' => false));
+	 echo $this->Html->script('chat', array('inline' => false));
+ ?> 
+    	<!-- Top content -->
+        <div class="top-content" style="position: relative; z-index: 0; background: none;">
+        	<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+						<h1>TEGUIO</h1>
+						<div class="description" >
+						    
+							<div class="chat_window">
+							    <div class="top_menu">
+							        <div class="buttons">
+							            <img src="img/iconos.png"  class="iconotg img-responsive">
+							        </div>
+							          <div class="title">ChatBox</div></div>
+							         <ul class="messages"></ul>
+							         <div class="bottom_wrapper clearfix">
+								      <div class="message_input_wrapper">
+								        <input class="message_input" placeholder="Consulta" /></div>
+								        <div class="send_audio">
+								          <div class="icon"></div>
+								          <div class="textchat"></div>
+								        </div>
+								        <div class="send_message">
+								          <div class="icon"></div>
+								          <div class="textchat"></div>
+								        </div>
 
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
+							         </div>
+							 </div>
+							<div class="message_template">
+								<li class="message">
+								    <div class="avatar"></div>
+								    <div class="text_wrapper">
+								      <div class="text"></div>
+								    </div>
+								</li>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        <div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 470px; width: 1263px; z-index: -999998; position: absolute;"><img src="img/puzzle.jpg" width="1263" style="    filter: brightness(0.8);position: absolute; margin: 0px; padding: 0px; border: none; width: 1263px; height: 842px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -186px;" height="842"></div>
 
-App::uses('Debugger', 'Utility');
-?>
-<h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
-<p>
-	<?php echo $this->Html->link(__d('cake_dev', 'Read the changelog'), 'http://cakephp.org/changelogs/' . Configure::version()); ?>
-</p>
-<?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<?php if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')): ?>
-	<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
-		<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
-		1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html" style="color:#fff;">Help me configure it</a>
-		2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
-	</p>
-<?php endif; ?>
-<p>
-<?php
-if (version_compare(PHP_VERSION, '5.2.8', '>=')):
-	echo '<span class="notice success">';
-		echo __d('cake_dev', 'Your version of PHP is 5.2.8 or higher.');
-	echo '</span>';
-else:
-	echo '<span class="notice">';
-		echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP.');
-	echo '</span>';
-endif;
-?>
-</p>
-<p>
-	<?php
-	if (is_writable(TMP)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your tmp directory is writable.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<p>
-	<?php
-	$settings = Cache::settings();
-	if (!empty($settings)):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'The %s is being used for core caching. To change the config edit %s', '<em>' . $settings['engine'] . 'Engine</em>', 'APP/Config/core.php');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in %s', 'APP/Config/core.php');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<p>
-	<?php
-	$filePresent = null;
-	if (file_exists(APP . 'Config' . DS . 'database.php')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your database configuration file is present.');
-			$filePresent = true;
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your database configuration file is NOT present.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Rename %s to %s', 'APP/Config/database.php.default', 'APP/Config/database.php');
-		echo '</span>';
-	endif;
-	?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $connectionError) {
-		$connected = false;
-		$errorMsg = $connectionError->getMessage();
-		if (method_exists($connectionError, 'getAttributes')):
-			$attributes = $connectionError->getAttributes();
-			if (isset($attributes['message'])):
-				$errorMsg .= '<br />' . $attributes['message'];
-			endif;
-		endif;
-	}
-	?>
-	<p>
-		<?php
-			if ($connected && $connected->isConnected()):
-				echo '<span class="notice success">';
-					echo __d('cake_dev', 'CakePHP is able to connect to the database.');
-				echo '</span>';
-			else:
-				echo '<span class="notice">';
-					echo __d('cake_dev', 'CakePHP is NOT able to connect to the database.');
-					echo '<br /><br />';
-					echo $errorMsg;
-				echo '</span>';
-			endif;
-		?>
-	</p>
-<?php
-endif;
+          <!-- Features -->
+        <div class="features-container section-container">
+	        <div class="container">
+	      
+	            
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+	                	<div class="row">
+	                		<div class="col-sm-4 features-box-icon">
+	                			 <img src="<?=Router::url('/img/chatbox.png',true)?>" style="display:inline-table" class="navbar-logo img-responsive">
+	                		</div>
+	                		<div class="col-sm-8">
+	                			<h3>Chatbox</h3>
+		                    	<p>
+		                    		 breve explicacion.
+		                    	</p>
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+	                	<div class="row">
+	                		<div class="col-sm-4 features-box-icon">
+	                		   <img src="<?=Router::url('/img/historial.png',true)?>"  style="display:inline-table" class="navbar-logo img-responsive">
+	                			
+	                		</div>
+	                		<div class="col-sm-8">
+	                			<h3>Registros</h3>
+		                    	<p>
+		                    		breve explicacion.
+		                    	</p>
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	            
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+	                	<div class="row">
+	                		<div class="col-sm-4 features-box-icon">
+	                			<img src="<?=Router::url('/img/foro.jpg',true)?>" style="display:inline-table" class="navbar-logo img-responsive">
+	                		</div>
+	                		<div class="col-sm-8">
+	                			<h3>Foro</h3>
+		                    	<p>
+		                    		 breve explicacion.
+		                    	</p>
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+	                	<div class="row">
+	                		<div class="col-sm-4 features-box-icon">
+	                			<img src="<?=Router::url('/img/cv.png',true)?>"  class="navbar-logo img-responsive" style="display:inline-table">
+	                		</div>
+	                		<div class="col-sm-8">
+	                			<h3>Bolsa de Trabajo</h3>
+		                    	<p>
+		                    		breve explicacion. 
+		                    	</p>
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
 
-App::uses('Validation', 'Utility');
-if (!Validation::alphaNumeric('cakephp')):
-	echo '<p><span class="notice">';
-		echo __d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-		echo '<br/>';
-		echo __d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-	echo '</span></p>';
-endif;
-?>
-
-<p>
-	<?php
-	if (CakePlugin::loaded('DebugKit')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'DebugKit plugin is present');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'DebugKit is not installed. It will help you inspect and debug different aspects of your application.');
-			echo '<br/>';
-			echo __d('cake_dev', 'You can install it from %s', $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit/tree/2.2'));
-		echo '</span>';
-	endif;
-	?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
-<p>
-<?php
-echo __d('cake_dev', 'To change the content of this page, edit: %s.<br />
-To change its layout, edit: %s.<br />
-You can also add some CSS styles for your pages at: %s.',
-	'APP/View/Pages/home.ctp', 'APP/View/Layouts/default.ctp', 'APP/webroot/css');
-?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Getting Started'); ?></h3>
-<p>
-	<?php
-	echo $this->Html->link(
-		sprintf('<strong>%s</strong> %s', __d('cake_dev', 'New'), __d('cake_dev', 'CakePHP 2.0 Docs')),
-		'http://book.cakephp.org/2.0/en/',
-		array('target' => '_blank', 'escape' => false)
-	);
-	?>
-</p>
-<p>
-	<?php
-	echo $this->Html->link(
-		__d('cake_dev', 'The 15 min Blog Tutorial'),
-		'http://book.cakephp.org/2.0/en/tutorials-and-examples/blog/blog.html',
-		array('target' => '_blank', 'escape' => false)
-	);
-	?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Official Plugins'); ?></h3>
-<p>
-<ul>
-	<li>
-		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit/tree/2.2') ?>:
-		<?php echo __d('cake_dev', 'provides a debugging toolbar and enhanced debugging tools for CakePHP applications.'); ?>
-	</li>
-	<li>
-		<?php echo $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
-		<?php echo __d('cake_dev', 'contains various localized validation classes and translations for specific countries'); ?>
-	</li>
-</ul>
-</p>
-
-<h3><?php echo __d('cake_dev', 'More about CakePHP'); ?></h3>
-<p>
-<?php echo __d('cake_dev', 'CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.'); ?>
-</p>
-<p>
-<?php echo __d('cake_dev', 'Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.'); ?>
-</p>
-
-<ul>
-	<li><a href="http://cakephp.org">CakePHP</a>
-	<ul><li><?php echo __d('cake_dev', 'The Rapid Development Framework'); ?></li></ul></li>
-	<li><a href="http://book.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Documentation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Your Rapid Development Cookbook'); ?></li></ul></li>
-	<li><a href="http://api.cakephp.org"><?php echo __d('cake_dev', 'CakePHP API'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Quick API Reference'); ?></li></ul></li>
-	<li><a href="http://bakery.cakephp.org"><?php echo __d('cake_dev', 'The Bakery'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything CakePHP'); ?></li></ul></li>
-	<li><a href="http://plugins.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Plugins'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'A comprehensive list of all CakePHP plugins created by the community'); ?></li></ul></li>
-	<li><a href="http://community.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Community Center'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything related to the CakePHP community in one place'); ?></li></ul></li>
-	<li><a href="http://discourse.cakephp.org/">CakePHP Official Forum </a>
-	<ul><li>CakePHP discussion forum</li></ul></li>
-	<li><a href="http://discourse.cakephp.org/"><?php echo __d('cake_dev', 'CakePHP Official Forum'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP discussion forum'); ?></li></ul></li>
-	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Find the CakePHP code on GitHub and contribute to the framework'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/issues"><?php echo __d('cake_dev', 'CakePHP Issues'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Issues'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/wiki#roadmaps"><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?></li></ul></li>
-	<li><a href="http://training.cakephp.org"><?php echo __d('cake_dev', 'Training'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Join a live session and get skilled with the framework'); ?></li></ul></li>
-	<li><a href="http://cakefest.org"><?php echo __d('cake_dev', 'CakeFest'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Don\'t miss our annual CakePHP conference'); ?></li></ul></li>
-	<li><a href="http://cakefoundation.org"><?php echo __d('cake_dev', 'Cake Software Foundation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Promoting development related to CakePHP'); ?></li></ul></li>
-</ul>
+	        </div>
+        </div>
+        
+        </div>
+        
+      
+      

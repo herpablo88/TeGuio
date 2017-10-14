@@ -39,7 +39,7 @@ $(document).ready(function() {
 		$('.'+modalClass).find('.modal-title').html(modalTitle);
 		$('.'+modalClass).find('.modal-text').html(modalText);
 		$('.'+modalClass).modal();
-
+        
 		$btn = $('.'+modalClass).find('.ok-button');
 		$btn.on('click',function(){
 			window.location.href = baseUrl + controller + "/delete/" + objectId;
