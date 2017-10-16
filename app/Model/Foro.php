@@ -2,7 +2,7 @@
 
 class Foro extends AppModel{
 	
-   public $useTable = 'preguntas';
+   public $useTable = 'post';
 
  
 }
