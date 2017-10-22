@@ -19,7 +19,7 @@ $output_to_ms = json_encode($cuerpo_de_api);
          ]
  }";
 */
-
+/*
 $handler = curl_init("https://westeurope.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases?Subscription-Key=2bffcc5dc60e42478b4bd4c92b177d50");
    curl_setopt($handler, CURLOPT_AUTOREFERER, true); 
    curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
@@ -36,37 +36,50 @@ $handler = curl_init("https://westeurope.api.cognitive.microsoft.com/text/analyt
    $response = curl_exec ($handler);
 curl_close($handler);
 echo $response;
+*/
 
 
 
 
 
-/* 
-ANDA SEGUN MS
-This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
-require_once 'HTTP_Request2-2.3.0/HTTP/Request2.php';
+//ANDA SEGUN MS
+//This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
+require_once 'C:\xampp\php\pear\HTTP\Request2.php';
 
-$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases');
+$request = new Http_Request2('https://westeurope.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases');
 $url = $request->getUrl();
 
 $headers = array(
 		// Request headers
 		'Content-Type' => 'application/json',
-		'Ocp-Apim-Subscription-Key' => '{subscription key}',
+		'Ocp-Apim-Subscription-Key' => '2bffcc5dc60e42478b4bd4c92b177d50',
 );
 
 $request->setHeader($headers);
 
 $parameters = array(
-		// Request parameters
+/*		'documents' => array(
+							'language' => array('es'),
+							'id' => array('1'),
+							'text' => array('Hablaron del rol de la Argentina como presidente del G-20')
+							)*/
 );
 
 $url->setQueryVariables($parameters);
 
+
 $request->setMethod(HTTP_Request2::METHOD_POST);
 
 // Request body
-$request->setBody("{body}");
+$request->setBody("{
+        'documents': [
+            {
+                'language': 'es',
+                'id': '1',
+                'text': 'Hablaron del rol de la Argentina como presidente del G-20, la educación y, sobre el final, llegó una pregunta incómoda para el Gobierno. El líder el líder de U2, Bono, lo consultó al presidente Mauricio Macri por la investigación sobre la desaparición de Santiago Maldonado.'
+            }
+         ]
+ }");
 
 try
 {
@@ -77,5 +90,5 @@ catch (HttpException $ex)
 {
 	echo $ex;
 }
-*/
+
 ?>
