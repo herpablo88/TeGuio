@@ -39,14 +39,28 @@
             return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
         };
         $('.send_message').click(function (e) {
-            return sendMessage(getMessageText());
+            //return sendMessage(getMessageText());
+        	alert(getMessageText());
+    		$.ajax({
+    		    url:  "app/APIs/ChatBot.php",
+    		    type: "POST",
+    		    data: {"texto":getMessageText()
+    		    },
+    			success: function(resultado){
+    					alert("Resultado: " + resultado);	
+    			},
+    			error: function() {
+                        alert("Error, no se pudo enviar el texto.");
+                }
+    		});
+        	
         });
         $('.message_input').keyup(function (e) {
             if (e.which === 13) {
                 return sendMessage(getMessageText());
             }
         });
-        sendMessage('En que te puedo ayudar? , describeme la situacion');
+        /*sendMessage('En que te puedo ayudar? , describeme la situacion');
         setTimeout(function () {
             return sendMessage('Mi hijo no deja de gritar');
         }, 1000);
@@ -55,7 +69,7 @@
         }, 2000);
         setTimeout(function () {
             return sendMessage('Si');
-        }, 1000);
+        }, 1000);*/
 
     });
 }.call(this));
