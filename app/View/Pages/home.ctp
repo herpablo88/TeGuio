@@ -3,7 +3,7 @@
 	 echo $this->Html->script('chat', array('inline' => false));
  ?> 
     	<!-- Top content -->
-        <div class="top-content" style="position: relative; z-index: 0; background: none;">
+        <div class="top-content" style="position: relative; z-index: 0; background: none;padding-top:3em;">
         	<div class="container">
 				<div class="row">
 					<div class="col-sm-12 text wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">

@@ -233,3 +233,11 @@ body {
 .message_template {
   display: none;
 }
+
+
+@media only screen and (max-width: 500px) {
+   .top-content {
+        padding-top:8em !important;
+    }
+}
+
