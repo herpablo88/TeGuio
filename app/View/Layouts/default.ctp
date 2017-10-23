@@ -7,7 +7,6 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-   
         <!-- Bootstrap 3.3.5 -->
         <?php 
             echo $this->Html->css('css');
@@ -15,7 +14,8 @@
             echo $this->Html->css('font-awesome.min.css');
             echo $this->Html->css('animate');
             echo $this->Html->css('style.css');
-
+            echo $this->Html->css('Footer-with-logo.css');
+			   		
             echo $this->Html->css('../bootstrap/css/bootstrap.min');
             echo $this->Html->css('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
             echo $this->Html->css('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
@@ -49,16 +49,49 @@
 
             <!-- Main Footer -->
               <!-- Footer -->
-        <footer>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 footer-copyright">
-                    <strong>contacto : teguioautismo@gmail.com</strong>
-                   
-                    </div>
-                </div>
-          </div>
-        </footer>
+			    <footer id="myFooter">
+			        <div class="container">
+			            <div class="row">
+			                <div class="col-sm-3">
+			                    <h5>Desarrolladores</h5>
+			                    <ul>
+			                        <li><a href="#">Karina Obermeier</a></li>
+			                        <li><a href="#">Rocio Bravo</a></li>
+			                        <li><a href="#">Pablo Hernandez</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col-sm-3">
+			                    <h5>Datos &uacute;tiles</h5>
+			                    <ul>
+			                        <li><a href="http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1561-31942015000100019">Autismo: un acercamiento hacia el diagn&oacute;stico y la gen&eacute;tica</a></li>
+			                        <li><a href="http://www.lanacion.com.ar/1919944-autismo-en-la-escuela-ya-se-puede-hablar-de-inclusion">Autismo en la escuela: ya se puede hablar de inclusi&oacute;n?</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col-sm-3">
+			                    <h5>ONG's</h5>
+			                    <ul>
+			                        <li><a href="http://apadea.org.ar/">Apadea</a></li>
+			                        <li><a href="http://www.panaacea.org/">Panaacea</a></li>
+			                        <li><a href="http://www.brincar.org.ar/">Brincar</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col-sm-3 info">
+			                    <h5>Contactanos</h5>
+			                    <p>teguioautismo@gmail.com</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="second-bar">
+			           <div class="container">
+			                <h2 class="logo"><a href="#"> TeGuio </a></h2>
+			                <div class="social-icons">
+			                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+			                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+			                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+			                </div>
+			            </div>
+			        </div>
+			    </footer>
       </div><!-- ./wrapper -->
       
             <?php

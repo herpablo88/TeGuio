@@ -15,7 +15,7 @@
 							        <div class="buttons">
 							            <img src="img/iconos.png"  class="iconotg img-responsive">
 							        </div>
-							          <div class="title">ChatBox</div></div>
+							          <div class="title">ChatBot</div></div>
 							         <ul class="messages"></ul>
 							         <div class="bottom_wrapper clearfix">
 								      <div class="message_input_wrapper">
@@ -57,9 +57,10 @@
 	                			 <img src="<?=Router::url('/img/chatbox.png',true)?>" style="display:inline-table" class="navbar-logo img-responsive">
 	                		</div>
 	                		<div class="col-sm-8">
-	                			<h3>Chatbox</h3>
+	                			<h3>Chatbot</h3>
 		                    	<p>
-		                    		 breve explicacion.
+		                    		 Qu&eacute; es un <b>Chatbot</b>? Es una ayuda virtual dedicada a interpretar y responder consultas. En nuestro caso &eacute;ste servicio se pone a disposici&oacute;n
+		                    		 de los usuarios para poder responder r&aacute;pidamente ante situaciones de crisis. Contale qu&eacute; est&aacute; pasando y veamos qu&eacute; tiene para decir!
 		                    	</p>
 	                		</div>
 	                	</div>
@@ -73,7 +74,8 @@
 	                		<div class="col-sm-8">
 	                			<h3>Registros</h3>
 		                    	<p>
-		                    		breve explicacion.
+		                    		Cualquier usuario registrado dispone de un seguimiento de las crisis y datos quien est&eacute; a cargo, pudiendo as&iacute; hacer un seguimiento,
+		                    		control e incluso utilizar &eacute;sta informaci&oacute;n para mejorar la calidad de vida del individuo.
 		                    	</p>
 	                		</div>
 	                	</div>
@@ -89,7 +91,8 @@
 	                		<div class="col-sm-8">
 	                			<h3>Foro</h3>
 		                    	<p>
-		                    		 breve explicacion.
+		                    		 Alguna vez quisiste poder preguntar y no sab&iacute;s d&oacute;nde? Ac&aacute; armamos un esp&aacute;cio para que las personas que interact&uacute;an 
+		                    		 con personas con autismo puedan intercambiar ideas, compartir opiniones y realizar consultas, pudiendo fomentar la comunicaci&oacute;n entre toda la comnunidad! 
 		                    	</p>
 	                		</div>
 	                	</div>
@@ -102,7 +105,7 @@
 	                		<div class="col-sm-8">
 	                			<h3>Bolsa de Trabajo</h3>
 		                    	<p>
-		                    		breve explicacion. 
+		                    		Un lugar donde se pueden buscar personas con autismo, sus capacidades y conocimientos, ayudar a la integraci&oacute;n e inclusi&oacute;n laboral.
 		                    	</p>
 	                		</div>
 	                	</div>

@@ -1,0 +1,103 @@
+//Desde dentro de la carpeta de la app
+bluemix app push autismounlam -m 512m
+
+
+
+
+
+Saltar al contenido
+
+    Documentos
+
+        Quedan 264 días de prueba
+
+        Pablo Hernandez's Account
+
+        |
+
+        EE.UU. sur
+        :
+
+        herpablo@ar.ibm.com
+        :
+
+        dev
+
+Iniciar sesión en IBM Bluemix
+
+bluemix
+IBM Bluemix
+Apps de Cloud Foundry
+
+    Catálogo
+        Soporte
+        Gestionar
+
+
+
+
+    Cómo empezar
+    Visión general
+    Tiempo de ejecución
+    Conexiones
+    Registros
+    Supervisión
+    Gestión de API
+
+teguio
+Credenciales de servicio
+
+{
+  "cleardb": [
+    {
+      "credentials": {
+        "jdbcUrl": "jdbc:mysql://us-cdbr-sl-dfw-01.cleardb.net/ibmx_93b625792eefe06?user=b330f00366a625&password=133b3281",
+        "uri": "mysql://b330f00366a625:133b3281@us-cdbr-sl-dfw-01.cleardb.net:3306/ibmx_93b625792eefe06?reconnect=true",
+        "name": "ibmx_93b625792eefe06",
+        "hostname": "us-cdbr-sl-dfw-01.cleardb.net",
+        "port": "3306",
+        "username": "b330f00366a625",
+        "password": "133b3281"
+      },
+      "syslog_drain_url": null,
+      "volume_mounts": [],
+      "label": "cleardb",
+      "provider": null,
+      "plan": "cb5",
+      "name": "teguio",
+      "tags": [
+        "Data Stores",
+        "DBA",
+        "(S) Cloud",
+        "(P) Analytics",
+        "Bluemix",
+        "Platform",
+        "ibm_dedicated_public",
+        "Infrastructure",
+        "Service",
+        "data_management",
+        "IT Operations",
+        "web and app",
+        "ibm_third_party"
+      ]
+    }
+  ]
+}
+
+Apps de Cloud Foundry/ autismounlam
+PHP
+
+    autismounlam
+    En ejecución
+    Visitar URL de app
+
+    Rutas 
+
+ClearDB Managed MySQL Database
+
+teguio
+
+ClearDB Managed MySQL Database
+
+cb5
+Documentos
