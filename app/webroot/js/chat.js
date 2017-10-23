@@ -1,4 +1,12 @@
-  (function () {
+/*contador para que el chatbot vaya preguntando detalles:
+ * 1.situacion
+ * 2.condicion sonora
+ * 3.condicion visual
+ */ 
+var interaccion_con_chatbot = 0; 
+var concatenacion_situacion = "";
+
+(function () {
     var Message;
     Message = function (arg) {
         this.text = arg.text, this.message_side = arg.message_side;
@@ -39,15 +47,25 @@
             return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
         };
         $('.send_message').click(function (e) {
-            //return sendMessage(getMessageText());
-        	alert(getMessageText());
+        	if(interaccion_con_chatbot < 2){
+        		concatenacion_situacion = concatenacion_situacion + '.' + getMessageText();        		
+        		sendMessage(getMessageText());
+        		interaccion_con_chatbot = interaccion_con_chatbot + 1;
+        		if(interaccion_con_chatbot == 1){
+        			return sendMessage('Qué condición de ruido hay?');
+        		}
+        		if(interaccion_con_chatbot == 2){
+        			return sendMessage('Qué condición de luz hay?');
+        		}
+        	}
+        	
     		$.ajax({
-    		    url:  "app/APIs/ChatBot.php",
+    		    url:  "localhost/TeGuioChatbot/ChatBot.php",
     		    type: "POST",
-    		    data: {"texto":getMessageText()
+    		    data: {"mensaje":concatenacion_situacion
     		    },
     			success: function(resultado){
-    					alert("Resultado: " + resultado);	
+    					alert("OK");	
     			},
     			error: function() {
                         alert("Error, no se pudo enviar el texto.");
@@ -60,10 +78,11 @@
                 return sendMessage(getMessageText());
             }
         });
-        /*sendMessage('En que te puedo ayudar? , describeme la situacion');
-        setTimeout(function () {
+        sendMessage('En que te puedo ayudar? , describeme la situacion');
+        /*setTimeout(function () {
             return sendMessage('Mi hijo no deja de gritar');
         }, 1000);
+        
         return setTimeout(function () {
             return sendMessage('hay ruido fuerte?');
         }, 2000);
