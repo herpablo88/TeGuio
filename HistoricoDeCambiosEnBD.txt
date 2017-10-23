@@ -1,0 +1,3 @@
+-TABLA respuesta: Se elimina contraint de que pida el id de histórico ya que el histórico pide ya la respuesta cargada
+-TABLA keywords: Se elimina en keywords la column pk_preguntas como primary key para que admit duplicados
+-Tabla respuesta: se agrega campo para flag del medico
