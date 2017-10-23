@@ -69,6 +69,7 @@ var concatenacion_situacion = "";
     		    },
     			success: function(resultado){
     					alert("OK");	
+    					sendMessage("<p>La soluci&oacute;n es:</p><p> DESCRIPCION </p><p>Funcion&oacute;?</p><button value='si'>Si</button><button value='no'>No</button>",'left');
     			},
     			error: function() {
                         alert("Error, no se pudo enviar el texto.");
@@ -82,16 +83,5 @@ var concatenacion_situacion = "";
             }
         });
         sendMessage('En que te puedo ayudar? Describeme la situacion','left');
-        /*setTimeout(function () {
-            return sendMessage('Mi hijo no deja de gritar');
-        }, 1000);
-        
-        return setTimeout(function () {
-            return sendMessage('hay ruido fuerte?');
-        }, 2000);
-        setTimeout(function () {
-            return sendMessage('Si');
-        }, 1000);*/
-
     });
 }.call(this));
