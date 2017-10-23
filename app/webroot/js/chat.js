@@ -31,14 +31,14 @@ var concatenacion_situacion = "";
             $message_input = $('.message_input');
             return $message_input.val();
         };
-        sendMessage = function (text) {
+        sendMessage = function (text,lado) {
             var $messages, message;
             if (text.trim() === '') {
                 return;
             }
             $('.message_input').val('');
             $messages = $('.messages');
-            message_side = message_side === 'left' ? 'right' : 'left';
+            message_side = lado;
             message = new Message({
                 text: text,
                 message_side: message_side
@@ -49,18 +49,21 @@ var concatenacion_situacion = "";
         $('.send_message').click(function (e) {
         	if(interaccion_con_chatbot < 2){
         		concatenacion_situacion = concatenacion_situacion + '.' + getMessageText();        		
-        		sendMessage(getMessageText());
+        		sendMessage(getMessageText(),'right');
         		interaccion_con_chatbot = interaccion_con_chatbot + 1;
         		if(interaccion_con_chatbot == 1){
-        			return sendMessage('Qué condición de ruido hay?');
+        			return sendMessage('Qué condición de ruido hay?','left');
         		}
         		if(interaccion_con_chatbot == 2){
-        			return sendMessage('Qué condición de luz hay?');
+        			return sendMessage('Qué condición de luz hay?','left');
         		}
         	}
         	
+        	sendMessage(getMessageText(),'right');
+        	
+        	//$(".messages ul").append("<li class='message left appeared'> <div class='avatar'></div> <div class='text_wrapper'> <div class='text>La solucion es X </div> </li>");
     		$.ajax({
-    		    url:  "localhost/TeGuioChatbot/ChatBot.php",
+    		    url:  "ChatBot/analizar_texto",
     		    type: "POST",
     		    data: {"mensaje":concatenacion_situacion
     		    },
@@ -75,10 +78,10 @@ var concatenacion_situacion = "";
         });
         $('.message_input').keyup(function (e) {
             if (e.which === 13) {
-                return sendMessage(getMessageText());
+                return sendMessage(getMessageText(),'right');
             }
         });
-        sendMessage('En que te puedo ayudar? , describeme la situacion');
+        sendMessage('En que te puedo ayudar? Describeme la situacion','left');
         /*setTimeout(function () {
             return sendMessage('Mi hijo no deja de gritar');
         }, 1000);
