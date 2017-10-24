@@ -61,7 +61,6 @@ var concatenacion_situacion = "";
         	
         	sendMessage(getMessageText(),'right');
         	
-        	//$(".messages ul").append("<li class='message left appeared'> <div class='avatar'></div> <div class='text_wrapper'> <div class='text>La solucion es X </div> </li>");
     		$.ajax({
     		    url:  "ChatBot/analizar_texto",
     		    type: "POST",
@@ -69,7 +68,16 @@ var concatenacion_situacion = "";
     		    },
     			success: function(resultado){
     					alert("OK");	
-    					sendMessage("<p>La soluci&oacute;n es:</p><p> DESCRIPCION </p><p>Funcion&oacute;?</p><button value='si'>Si</button><button value='no'>No</button>",'left');
+    					if(resultado['mensaje_resultado'] != 'OK'){
+    						return sendMessage(resultado['mensaje_resultado'],'left');
+    					}
+    					
+    					var respuesta_medico = "";
+    					if(resultado['respuesta_elegida']['flag_medico'] == 1){
+    						respuesta_medico = "<p><b>Esta respuesta fue validada por un profesional</b></p>";
+    					}
+    					
+    					sendMessage("<p>La soluci&oacute;n es:</p><p> " + resultado['respuesta_elegida']['texto'] + "</p>"+ respuesta_medico + "<p>Funcion&oacute;?</p><button value='si' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",1);' >Si</button><button value='no' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",0);'>No</button>",'left');
     			},
     			error: function() {
                         alert("Error, no se pudo enviar el texto.");
@@ -85,3 +93,7 @@ var concatenacion_situacion = "";
         sendMessage('En que te puedo ayudar? Describeme la situacion','left');
     });
 }.call(this));
+
+function EnviarRespuesta(rta){
+	alert("definir EnviarRespuesta");
+}
