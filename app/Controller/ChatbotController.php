@@ -16,12 +16,29 @@ class ChatbotController extends AppController {
         if ($this->request->is('post')) {
         	$respuesta = array();
             if(!isset($this->data['mensaje'])){
-			   $respuesta['mensaje_resultado'] = 'No se escribio un mensaje';              
+			   $respuesta['mensaje_resultado'] = 'No se escribio un mensaje';  
+				echo json_encode($respuesta);
+				die;			   
 		    }else{ 
                $respuestaCurl = $this->postCurlRequest($this->data['mensaje']);
                
+			   if($respuestaCurl == false){
+				$respuesta['mensaje_resultado'] = 'No se pudo procesar el mensaje. Chequee su conexión a internet.';  
+				echo json_encode($respuesta);
+				die;		
+			   }
+			   
                $jsonCurl = array();
                $jsonCurl = json_decode($respuestaCurl,true);
+			   
+			 
+			   if(count($jsonCurl['documents'][0]['keyPhrases']) == 0){
+				$respuesta['mensaje_resultado'] = 'No se pudo entender el mensaje.';  
+				echo json_encode($respuesta);
+				die;						   
+			   }
+			   
+			   
                $respuesta['palabras_claves_detectadas'] = $jsonCurl['documents'][0]['keyPhrases'];
                /*$idrespuestas = array();
               

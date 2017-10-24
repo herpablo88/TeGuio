@@ -10,19 +10,19 @@ VALUES("mi hijo esta desesperado. Las sierras de la carniceria chillan");
 
 #respuestas:
 INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La maquina moledora puede estar afectando su audicion, retirarlo del lugar.",17,0,0);
+VALUES("La maquina moledora puede estar afectando su audicion, retirarlo del lugar.",32,0,0);
 
 INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La luz fluorescente puede estar afectando su audicion, retirarlo del lugar.",18,0,0);
+VALUES("La luz fluorescente puede estar afectando su audicion, retirarlo del lugar.",33,0,0);
 
 INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La sierras pueden estar afectando su audicion, retirarlo del lugar.",19,0,0);
+VALUES("La sierras pueden estar afectando su audicion, retirarlo del lugar.",34,0,0);
 
 #keywords
 INSERT INTO keywords(fk_pregunta,palabras)
-VALUES(17,"maquina moledora"),
-(17,"hijo"),
-(18,"hijo"),
-(18,"luz fluorescente"),
-(19,"sierras"),
-(19,"hijo")
+VALUES(32,"maquina moledora"),
+(32,"hijo"),
+(33,"hijo"),
+(33,"luz fluorescente"),
+(34,"sierras"),
+(34,"hijo")
