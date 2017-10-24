@@ -47,8 +47,9 @@ var concatenacion_situacion = "";
             return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
         };
         $('.send_message').click(function (e) {
+
         	if(interaccion_con_chatbot < 2){
-        		concatenacion_situacion = concatenacion_situacion + ' ' + getMessageText();        		
+        		concatenacion_situacion = concatenacion_situacion  + '.' + getMessageText();        		
         		sendMessage(getMessageText(),'right');
         		interaccion_con_chatbot = interaccion_con_chatbot + 1;
         		if(interaccion_con_chatbot == 1){
@@ -60,25 +61,25 @@ var concatenacion_situacion = "";
         	}
         	
         	sendMessage(getMessageText(),'right');
-        	alert(concatenacion_situacion);
+        	
     		$.ajax({
     		    url:  "Chatbot/chatbox",
     		    type: "POST",
     		    data: {"mensaje":concatenacion_situacion
     		    },
     			success: function(resultado){
-                    alert(resultado);
-    					alert("OK");	
+                    interaccion_con_chatbot = 0;
     					if(resultado['mensaje_resultado'] != 'OK'){
     						return sendMessage(resultado['mensaje_resultado'],'left');
+    						sendMessage('En que te puedo ayudar? Describeme la situacion','left');
     					}
     					
     					var respuesta_medico = "";
-    					if(resultado['respuesta_elegida']['flag_medico'] == 1){
+    					if(resultado['respuesta_elegida'][0]['flag_medico'] == 1){
     						respuesta_medico = "<p><b>Esta respuesta fue validada por un profesional</b></p>";
     					}
     					
-    					sendMessage("<p>La soluci&oacute;n es:</p><p> " + resultado['respuesta_elegida']['texto'] + "</p>"+ respuesta_medico + "<p>Funcion&oacute;?</p><button value='si' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",1);' >Si</button><button value='no' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",0);'>No</button>",'left');
+    					sendMessage("<p>La soluci&oacute;n es:</p><p> " + resultado['respuesta_elegida'][0]['texto'] + "</p>"+ respuesta_medico + "<p>Funcion&oacute;?</p><button value='si' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",1);' >Si</button><button value='no' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",0);'>No</button>",'left');
     			},
     			error: function() {
                         alert("Error, no se pudo enviar el texto.");

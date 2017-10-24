@@ -1,5 +1,5 @@
 <?php
-
+header("Content-type: application/json");
 class ChatbotController extends AppController {
 
   public function beforeFilter(){
@@ -7,24 +7,23 @@ class ChatbotController extends AppController {
     $this->loadModel('Keywords');
     $this->loadModel('Preguntas');
     $this->loadModel('Respuestas');
- 
+    $this->loadModel('Post');
   }
 
     public function chatbox(){
-
+    	$this->autoRender = false;//Para poder devolver un json
+    	
         if ($this->request->is('post')) {
-         
+        	$respuesta = array();
             if(!isset($this->data['mensaje'])){
-
-			   $resultado['mensaje_resultado'] = 'No se escribio un mensaje';
-              
+			   $respuesta['mensaje_resultado'] = 'No se escribio un mensaje';              
 		    }else{ 
-
                $respuestaCurl = $this->postCurlRequest($this->data['mensaje']);
                
                $jsonCurl = array();
                $jsonCurl = json_decode($respuestaCurl,true);
-               $idrespuestas = array();
+               $respuesta['palabras_claves_detectadas'] = $jsonCurl['documents'][0]['keyPhrases'];
+               /*$idrespuestas = array();
               
                 foreach ($jsonCurl['documents'][0]['keyPhrases'] as $string) {
                	    $idrespuestas = $this->Keywords->find('all', array('conditions' =>                             array('palabras LIKE' => "%" .$string. "%")));
@@ -37,9 +36,55 @@ class ChatbotController extends AppController {
                 foreach ($respuestaDescripcion as $key => $resp) {
                	    $resultado['mensaje_resultado'] = $resp['Respuestas']['descripcion'];
                	   
-                }
+                }*/
 
-                var_dump($resultado['mensaje_resultado']);die;
+               //Armado de query:
+
+               $query = "SELECT respuestas.id,respuestas.descripcion, count(respuestas.id) as 'coincidencias',respuestas.flag_medico
+						FROM respuestas
+						INNER JOIN preguntas ON preguntas.id = respuestas.pk_pregunta
+						INNER JOIN keywords ON keywords.fk_pregunta = preguntas.id
+						WHERE ";
+	               
+	               $primer_bucle = true;
+	               
+	               foreach ($jsonCurl['documents'][0]['keyPhrases'] as &$keyword) {
+	               	if($primer_bucle){
+	               		$query = $query . "keywords.palabras LIKE '%$keyword%'";
+	               		$primer_bucle = false;
+	               	}else{
+	               		$query = $query . "OR keywords.palabras LIKE '%$keyword%'";
+	               	}
+	               }
+	               
+	               $query = $query . "GROUP BY respuestas.id
+							ORDER BY flag_medico DESC,coincidencias DESC,respuestas.ranking_positivo DESC,respuestas.ranking_negativo ASC";
+	                
+	            //FIN armado de query:
+
+	            $data = $this->Post->query($query);
+
+	            if(count($data) == 0){
+	            		$respuesta['mensaje_resultado'] = 'No hay soluciones posibles por el momento.';
+	            		echo json_encode($respuesta);
+	            		die;
+	            }        
+	            
+	            $cantidad_de_respuestas = 1; //Setear la cantidad de respuestas deseadas
+	            $contador = 0;
+
+	            foreach ($data as &$fila) {
+	            	if($contador < $cantidad_de_respuestas){
+	            		$respuesta['respuesta_elegida'][$contador]['id'] = $fila['respuestas']['id'];
+	            		$respuesta['respuesta_elegida'][$contador]['texto'] = $fila['respuestas']['descripcion'];
+	            		$respuesta['respuesta_elegida'][$contador]['flag_medico'] = $fila['respuestas']['flag_medico'];
+	            	}
+	            	$contador = $contador + 1;
+	            }
+	            
+	            $respuesta['mensaje_resultado'] = 'OK';
+	            echo json_encode($respuesta);
+	            die;
 		   }
 		}
 	}	   
