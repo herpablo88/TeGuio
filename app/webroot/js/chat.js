@@ -48,7 +48,7 @@ var concatenacion_situacion = "";
         };
         $('.send_message').click(function (e) {
         	if(interaccion_con_chatbot < 2){
-        		concatenacion_situacion = concatenacion_situacion + '.' + getMessageText();        		
+        		concatenacion_situacion = concatenacion_situacion + ' ' + getMessageText();        		
         		sendMessage(getMessageText(),'right');
         		interaccion_con_chatbot = interaccion_con_chatbot + 1;
         		if(interaccion_con_chatbot == 1){
@@ -60,13 +60,14 @@ var concatenacion_situacion = "";
         	}
         	
         	sendMessage(getMessageText(),'right');
-        	
+        	alert(concatenacion_situacion);
     		$.ajax({
-    		    url:  "ChatBot/analizar_texto",
+    		    url:  "Chatbot/chatbox",
     		    type: "POST",
     		    data: {"mensaje":concatenacion_situacion
     		    },
     			success: function(resultado){
+                    alert(resultado);
     					alert("OK");	
     					if(resultado['mensaje_resultado'] != 'OK'){
     						return sendMessage(resultado['mensaje_resultado'],'left');
