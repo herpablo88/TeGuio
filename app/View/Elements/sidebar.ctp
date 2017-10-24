@@ -17,29 +17,75 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="top-navbar-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?=Router::url('/',true)?>">Home</a></li>
-             <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>"><i class="fa fa-globe fa-lg"></i> <span>Foro</span></a></li>
-           <!--   <li class="<?=($this->request->params['controller'] == 'preguntas')?'active':null?>"><a href="<?=Router::url('/preguntas',true)?>"><i class="fa fa-check-square-o"></i> <span>Preguntas</span></a></li>-->
-            <li class="<?=($this->request->params['controller'] == 'usuarios')?'active':null?>"><a href="<?=Router::url('/usuarios',true)?>"><i class="glyphicon glyphicon-user"></i> <span>Usuarios</span></a></li> 
-            <li ><span style="margin: 6%" class="btn btn-default" action-redirect btn-controller='usuarios' btn-action='perfil' btn-data="12345"><span class='glyphicon glyphicon-user'> MI PERFIL</span></span></li>      
+          
+               
    
          
-       <li class="dropdown"> 
-            <a class="dropdown-toggle btn btn-link-3" data-toggle="dropdown" href="#">Ingresar
+       <li class="dropdown">
+          <div id="login-panel">
+                <?php
+                  if ($loggedIn) {
+
+                ?>   
+                  <li><a href="<?=Router::url('/',true)?>">Home</a></li>
+             <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>"><i class="fa fa-globe fa-lg"></i> <span>Foro</span></a></li>
+           <!--   <li class="<?=($this->request->params['controller'] == 'preguntas')?'active':null?>"><a href="<?=Router::url('/preguntas',true)?>"><i class="fa fa-check-square-o"></i> <span>Preguntas</span></a></li>-->
+
+            <li class="<?=($this->request->params['controller'] == 'users')?'active':null?>"><a href="<?=Router::url('/users',true)?>"><i class="glyphicon glyphicon-user"></i> <span>Usuarios</span></a></li> 
+
+                    <li ><span style="margin: 6%" class="btn btn-default" action-redirect btn-controller='users' btn-action='perfil' btn-data="<?=$user['id']?>"><span class='glyphicon glyphicon-user'> MI PERFIL</span></span></li>  
+                  
+                  <li >
+                  <div id="control-panel">
+                   
+                    <div id="user-data">
+                      <div id="user-name"><?php echo $user['nombre'] . " " . $user['apellido']; ?></div>
+                   
+                    </div>
+                  
+                  </div>
+                  <div id="control-footer">
+                    <?php
+                    
+                      echo $this->Html->link('Cerrar sesion', array(
+                          'controller' => 'users', 
+                          'action' => 'logout'
+                        ),
+                        array(
+                          'class' => 'right'
+                        )
+                      );
+                    ?>
+                  </div>
+                  </li>
+                <?php
+                  } else {
+                ?>
+                   <a class="dropdown-toggle btn btn-link-3" data-toggle="dropdown" href="#">Ingresar
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#" id="register" data-toggle="modal" data-target="#registro-modal">Resgistrarme</a></li>
+              <li><a href="#" id="register" data-toggle="modal" data-target="#registro-modal">Registrarme</a></li>
                <li> <?php 
                     echo $this->Form->create(null, array('url' => array('controller' => 'Users', 'action' => 'login'))); 
                   ?>
                    <p class="title">Iniciar Sesion</p>
-                    <input type="text" id="dni" name="dni" placeholder="DNI" />
-                    <input type="password" id="contraseña" name="contraseña" placeholder="contraseña" />
-                    <input type="submit" id="login" value="Ingresar" />
-                    <a href="#" id="forgot-password">Olvide mi contraseña</a>
-                  <?php echo $this->Form->end(); ?>
+                   <div class="users form">
+                   <?php echo $this->Session->flash('auth'); ?>
+                   <?php echo $this->Form->create('User'); ?>
+                   <fieldset>
+                   <?php echo $this->Form->input('username');
+                        echo $this->Form->input('password');
+                    ?>
+                      </fieldset>
+                  <?php echo $this->Form->end(__('Login')); ?>
+                  </div>
                   </li>
                </ul>
+                <?php
+                  }
+                ?>
+              </div>
+          
             </li>
           </ul>
         </div>
@@ -93,7 +139,7 @@
       <div class="modal-body">
         <?php 
           echo $this->Form->create(null, array(
-              'url' => array('controller' => 'Usuarios', 'action' => 'register'),
+              'url' => array('controller' => 'Users', 'action' => 'register'),
               'id' => 'particularForm'
             )
           );
@@ -108,7 +154,7 @@
             
               <label for="password">Contraseña</label>
               <div class="form-group">
-                <input type="password" id="contraseña" class="form-control" name="contraseña" placeholder="contraseña" />
+                <input type="password" id="password" class="form-control" name="password" placeholder="contraseña" />
               </div>
             
               <label for="nombre">Nombre</label>
@@ -155,7 +201,7 @@
       <div class="modal-body">
         <?php 
           echo $this->Form->create(null, array(
-              'url' => array('controller' => 'Usuarios', 'action' => 'register'),
+              'url' => array('controller' => 'Users', 'action' => 'register'),
               'id' => 'particularForm'
             )
           );
@@ -178,7 +224,8 @@
             
               <label for="password">Contraseña</label>
               <div class="form-group">
-                <input type="password" id="contraseña" class="form-control" name="contraseña" placeholder="contraseña" />
+        
+                <input type="password" id="password" class="form-control" name="password" placeholder="contraseña" />
               </div>
             
               <label for="nombre">Nombre</label>

@@ -1,7 +1,7 @@
 <div class="features-container section-container">
     <div class="container">
         <section class="content-header" style="padding-top:74px">
-            <ol class="breadcrumb"> <?php var_dump($usuariojr);die; ?>
+            <ol class="breadcrumb">
                <li class="active"><a href="<?=Router::url('/preguntas',true)?>">Preguntas</a></li>
             </ol>
             <h3 class="box-title">Pregunta</h3>

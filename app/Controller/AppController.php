@@ -35,40 +35,44 @@ App::uses('CakeEmail', 'Network/Email');
 App::uses('CakeEmail', 'Network/Email');
 
 class AppController extends Controller
-{
-    public $components = array(
-        'Session',
+{   
+
+     public $components = array(
+        'RequestHandler',
         'Paginator',
+        'Session',
         'Auth' => array(
             'authenticate' => array(
-                'Basic', 
                 'Form' => array(
-                     'userModel' => 'Login',
-                        'fields' => array(
-                            'dni' => '12345',
-                            'contraseña' => '12345',
-                        )
+                    'passwordHasher' => 'Blowfish',
+                    'userModel' => 'User',
+                    'fields' => array(
+                        'username' => 'username',
+                        'password' => 'password'
+                    )
                 )
-            ),
-            'loginRedirect' => array(
-                'controller' => 'Pages',
-                'action' => 'index'
-            ),
+            ) ,
+            'loginAction' => array(
+                "controller" => "Pages",
+                "action" => "display"
+            ) ,
             'logoutRedirect' => array(
                 'controller' => 'Pages',
-                'action' => 'index'
-            ),
-            'authorize' => array('Controller')
+                'action' => 'display'
+            )
         )
     );
-    
+
+  
 
     public function beforeFilter() {
-        $this->Auth->allow();
+        $this->Auth->allow();;
         $this->set('loggedIn', $this->Auth->loggedIn());
         $this->set('user', $this->Auth->user());
-  
+       
     }
+
+
 
 
     public $helpers = array(
@@ -89,4 +93,6 @@ class AppController extends Controller
 
 
 }
+
+
 

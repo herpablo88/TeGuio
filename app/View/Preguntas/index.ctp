@@ -6,11 +6,11 @@
             </ol>
             <h3 class="box-title">Preguntas</h3>
         </section>
-
+       
             <!-- Main content -->
         <section class="content ">
             <div class="separated">
-                <a class="btn btn-default btn-flat"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'),true)?>"><?php echo __('+ Agregar ');?></a>
+                <a class="btn btn-default btn-flat"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'.'/'.$usuariojr["Usuariojr"]["id"].'/'.$user["id"]),true)?>"><?php echo __('+ Agregar ');?></a>
             </div>
 
             <?php if (empty($items)):
@@ -35,14 +35,14 @@
                         <td><?=$item[$model]['descripcion']?></td>
 
                         <td>
-                        <span class="btn btn-warning btn-xs" action-redirect btn-controller='preguntas' btn-action='edit' btn-data="<?=$item[$model]['id']?>"><span class='fa fa-pencil'></span></span>
+                        <span class="btn btn-warning btn-xs" action-redirect btn-controller='preguntas' btn-action='edit' btn-data="<?=$item[$model]['id'].'/'.$usuariojr["Usuariojr"]["id"]?>"><span class='fa fa-pencil'></span></span>
 
                         <span class="btn btn-danger btn-xs"
                         action-modal='true'
                         modal-class='modal-danger'
                         modal-title='Eliminar Pregunta?'
                         modal-text='¿Estas seguro que deseas borrar esta pregunta?'
-                        object-id="<?=$item[$model]['id']?>"
+                        object-id="<?=$item[$model]['id'].'/'.$usuariojr["Usuariojr"]["id"]?>"
                         object-controller="preguntas"
                         ><span class='fa fa-times-circle'></span>
                         </span>

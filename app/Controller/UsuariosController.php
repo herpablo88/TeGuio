@@ -15,7 +15,7 @@ class UsuariosController extends AppController {
       $this->loadModel('Usuariojr');
       $this->loadModel('Historico');
      }
-  
+       
 
      public function index(){
     
@@ -125,9 +125,8 @@ class UsuariosController extends AppController {
     public function register() {
 
     $this->autoRender = false;
-    
-   
     $this->loadModel('Usuario');
+    $this->loadModel('Users');
     $this->loadModel('UsuarioMedico');
    
      if ($this->request->data) {
@@ -150,6 +149,11 @@ class UsuariosController extends AppController {
                         'apellido'   =>   $apellido , 
                         'id'         =>   $dni , 
                         'fk_tipo'    =>   $tipo  
+                        ));   
+
+            $users = $this->Users->save(array(
+                        'username' =>   $email,
+                        'password' =>   $passwordHasher->hash($contraseña),
                         ));   
            
             if(!empty($post['matricula'])) {   

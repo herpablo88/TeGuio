@@ -40,20 +40,28 @@ class PreguntasController extends AppController {
 
     }  
 
-     public function add(){
-
+     public function add($id_usuariojr,$idusuario){
+      $this->loadModel('Historico');
       $model = $this->modelClass;
         if ($this->request->is('post')) {
           
             $toSave = array(
-                'descripcion'    => $this->data['descripcion'],
+                'descripcion' => $this->data['descripcion'],
             );
 
-            $saved = $this->$model->save($toSave);
+            $savedPregunta = $this->$model->save($toSave);
 
-            if (!empty($saved)) {
+            if (!empty($savedPregunta)) {
+                        
+                $toSaveRelacion = array(
+                  'id'      => $id_usuariojr,
+                  'fk_preg' => $this->$model->id,
+                );
+
+                 $relacion = $this->Historico->save($toSaveRelacion);
+  
                 $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert');
-                return $this->redirect(array('action'=> 'index'));
+                return $this->redirect(array('action'=> 'index/'.$id_usuariojr));
             } 
             else {
                 $this->Session->setFlash(Configure::read('m.flash/form_not_saved') , 'alert');
@@ -63,8 +71,7 @@ class PreguntasController extends AppController {
      }
 
 
-     public function edit($id){
-     
+     public function edit($id,$id_usuariojr){
 
         $model = $this->modelClass;
         
@@ -79,9 +86,9 @@ class PreguntasController extends AppController {
             $saved = $this->$model->save($toSave);
 
             if (!empty($saved)) {
+                          
                 $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert');
-                return $this->redirect(array('action'=> 'index'));
-                
+                return $this->redirect(array('action'=> 'index/'.$id_usuariojr));
             } 
             else {
                 $this->Session->setFlash(Configure::read('m.flash/form_not_saved') , 'alert');
@@ -95,17 +102,16 @@ class PreguntasController extends AppController {
      }
 
 
-     public function delete($id){
+     public function delete($id,$id_usuariojr){
 
+        $this->loadModel('Historico');
         $model = $this->modelClass;
- 
+        $this->Historico->deleteAll(array('fk_preg'=> $id));
         $this->$model->delete($id);
         $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert-error');
         return $this->redirect(array(
-            'action' => 'index'
+            'action' => 'index'.$id_usuariojr
         ));
-
-
      }
 
 

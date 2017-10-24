@@ -22,9 +22,9 @@ class UsuariojrController extends AppController {
     public function listaUsuariosJr($id){
     
       $model = $this->modelClass;
-      $this->loadModel('Usuario');
+      $this->loadModel('User');
       
-      $usuario = $this->Usuario->find('first',array('conditions'=>array('id'=> $id)));
+      $usuario = $this->User->find('first',array('conditions'=>array('id'=> $id)));
       $this->set('usuario', $usuario);
 
 
@@ -73,7 +73,7 @@ class UsuariojrController extends AppController {
                 'id'         => $this->data['dni'],
                 'nombre'     => $this->data['nombre'],
                 'apellido'   => $this->data['apellido'],
-                'pk_usuario' => '12345',
+                'pk_usuario' => $this->data['user'],
             );
          
             $saved = $this->$model->save($toSave);
@@ -152,10 +152,24 @@ class UsuariojrController extends AppController {
      public function delete($id){
 
         $model = $this->modelClass;
+        $this->loadModel('Cvs');
+        $this->loadModel('Historico');
+        $this->loadModel('Preguntas');
+
         $idusuario = $this->$model->find('first',array('fields'    =>"pk_usuario",
                                                        'conditions'=>array('id'=> $id))); 
-        $this->loadModel('Cvs');
+       
+
+        $preguntas = $this->Historico->find('first',array('fields'    =>"fk_preg",
+                                                          'conditions'=>array('id'=> $id))); 
+           
+        foreach ($preguntas as $key => $value) {
+          $this->Preguntas->delete($value["fk_preg"]);
+        }
+        $this->Historico->deleteAll(array('historico.id'=> $id));
         $this->Cvs->deleteAll(array('cvs.id'=> $id));
+       
+      
         $this->$model->delete($id);
 
         $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert');

@@ -27,6 +27,7 @@
                             <span>Apellido</span>
                                 <textarea type="text" class="form-control" name="apellido" placeholder="apellido"  ></textarea>
                             </div>
+                             <input type="hidden" id="user" class="form-control " name="user" value="<?=$user["id"]?>" /> 
                         </div>
                     </div>
                     <div class="box-footer" >

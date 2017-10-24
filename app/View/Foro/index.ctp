@@ -5,7 +5,7 @@
                <li class="active"><a href="<?=Router::url('/Foro',true)?>">Foro</a></li>
             </ol>
             <h3 class="box-title">Tu consejo es la pieza que falta</h3>
-    </section>
+    </section> 
     <section class="content row">
       <div class="col-md-12">
         <section class="content row">
@@ -69,7 +69,7 @@
                 <textarea type="text" class="form-control"  name="descripcion" placeholder="Escriba su consulta"  ></textarea>
               </div>
           </div>
-          <input type="hidden" id="user" class="form-control " name="user" value="12345" /> 
+          <input type="hidden" id="user" class="form-control " name="user" value="<?=$user["id"]?>" /> 
           <div class="col-md-2"></div>
         </div>
         <div class="row">

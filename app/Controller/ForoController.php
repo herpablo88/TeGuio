@@ -10,7 +10,7 @@ class ForoController extends AppController {
   
 
   public function index(){
-
+    
     $model = $this->modelClass;
     $this->Paginator->settings = array(
           'limit' => $this->defaultLimit() ,
@@ -23,16 +23,16 @@ class ForoController extends AppController {
 
 
   public function verforo($id){
-    
-    $this->loadModel('Usuario');
+ 
+    $this->loadModel('Users');
     $this->loadModel('RespuestasPost'); 
     $this->loadModel('RespuestasPost');
 
     $model = $this->modelClass;
-
+    
     $item = $this->$model->findById($id);
-    $respPreg = $this->Usuario->find('first',array('conditions'=>array('id'=> $item["Foro"]["fk_usuario"])));
-    $item["Foro"]["nombre"] =  $respPreg["Usuario"]["nombre"]; 
+    $respPreg = $this->Users->find('first',array('conditions'=>array('id'=> $item["Foro"]["fk_usuario"])));
+    $item["Foro"]["nombre"] =  $respPreg["Users"]["nombre"]; 
     $item = $item["Foro"];    
     $this->set('item', $item);
 
@@ -40,8 +40,8 @@ class ForoController extends AppController {
 
     foreach ($respPost as $rp) {
  
-      $usuarioPost = $this->Usuario->find('first',array('conditions'=>array('id'=> $rp["RespuestasPost"]["fk_usuario"])));
-      $rp["RespuestasPost"]["nombre"] = $usuarioPost["Usuario"]["nombre"];
+      $usuarioPost = $this->Users->find('first',array('conditions'=>array('id'=> $rp["RespuestasPost"]["fk_usuario"])));
+      $rp["RespuestasPost"]["nombre"] = $usuarioPost["Users"]["nombre"];
       $respuestasPost[] = $rp["RespuestasPost"];
 
     }    
@@ -73,7 +73,7 @@ class ForoController extends AppController {
   public function add(){
     $model = $this->modelClass;
     if ($this->request->is('post')) {
-      
+
       $toSave = array(
           'fk_usuario'     => $this->data['user'],
           'descripcion'    => $this->data['descripcion'],
