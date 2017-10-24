@@ -19,5 +19,10 @@ JSON de prueba:
          ]
  }
 
+//para instalar pear
+como admin en cmd correr:
+C:\xampp\php>pear install HTTP_Request2
 
+y en el required:
+require_once 'C:\xampp\php\pear\HTTP\Request2.php';
 
