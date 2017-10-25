@@ -263,7 +263,7 @@ VALUES("La sierras pueden estar afectando su audicion, retirarlo del lugar.",34,
 
 #keywords
 INSERT INTO keywords(fk_pregunta,palabras)
-VALUES(32,"maquina moledora"),
+VALUES(32,"cafe"),
 (32,"hijo"),
 (33,"hijo"),
 (33,"luz fluorescente"),

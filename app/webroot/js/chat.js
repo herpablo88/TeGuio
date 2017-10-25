@@ -51,7 +51,9 @@ var pregunta_realizada = "";//variable usada para gurdar la pregunta del usuario
 
         	if(interaccion_con_chatbot < 2){
         		concatenacion_situacion = concatenacion_situacion  + '.' + getMessageText(); 
-        		pregunta_realizada = getMessageText();
+        		if(interaccion_con_chatbot == 0){
+            		pregunta_realizada = getMessageText();
+        		}
         		sendMessage(getMessageText(),'right');
         		interaccion_con_chatbot = interaccion_con_chatbot + 1;
         		if(interaccion_con_chatbot == 1){
@@ -72,8 +74,11 @@ var pregunta_realizada = "";//variable usada para gurdar la pregunta del usuario
     			success: function(resultado){
                     interaccion_con_chatbot = 0;
     					if(resultado['mensaje_resultado'] != 'OK'){
-    						return sendMessage(resultado['mensaje_resultado'],'left');
-    						sendMessage('En que te puedo ayudar? Describeme la situacion','left');
+    						sendMessage(resultado['mensaje_resultado'],'left');
+    						setTimeout(function() { 
+        						$('.messages').empty();
+        						sendMessage('En que te puedo ayudar? Describeme la situacion','left');
+    							}, 3000);
     					}
     					
     					var respuesta_medico = "";
@@ -105,7 +110,7 @@ function EnviarRespuesta(id_rta,accion){
 		comentario = prompt("Por favor describa cómo resolvió la situación de ser posible", "Pedido de ayuda");
 		modo = "DELETE";
 	}
-	 alert(id_rta + "-" + accion + "-" + comentario);
+
 	$.ajax({
 	    url:  "Chatbot/SetearRating",
 	    type: modo,

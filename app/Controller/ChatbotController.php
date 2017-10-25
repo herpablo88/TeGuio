@@ -75,8 +75,7 @@ class ChatbotController extends AppController {
 	               }
 	               
 	               $query = $query . "GROUP BY respuestas.id
-							ORDER BY flag_medico DESC,coincidencias DESC,respuestas.ranking_positivo DESC,respuestas.ranking_negativo ASC";
-	                
+							ORDER BY coincidencias DESC,flag_medico DESC,respuestas.ranking_positivo DESC,respuestas.ranking_negativo ASC";
 	            //FIN armado de query:
 
 	            $data = $this->Post->query($query);
@@ -123,12 +122,13 @@ class ChatbotController extends AppController {
 		}else{
 			$result = $link_a_db->query("UPDATE respuestas SET ranking_negativo = ranking_negativo + 1 WHERE id={$this->data['id']}");
 			
-			/*if($comentario != ""){
-				$result = $link_a_db->query("INSERT INTO preguntas (descripcion) VALUES('{$this->data['pregunta_realizada']})");
+			if($this->data['comentario'] != ""){
+				$result = $link_a_db->query("INSERT INTO preguntas(descripcion) VALUES('{$this->data['pregunta_realizada']}')");
+				$id_pregunta = $link_a_db->insert_id;
 				$result = $link_a_db->query("INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo,flag_medico)
-											VALUES('{$this->data['comentario']}',{$result->->insert_id},1,0,0);");
+											VALUES('{$this->data['comentario']}',{$id_pregunta},1,0,0)");
 				
-				$respuestaCurl = $this->postCurlRequest($this->data['comentario']);
+				$respuestaCurl = $this->postCurlRequest($this->data['pregunta_realizada']);
 				 
 				if($respuestaCurl == false){
 					$respuesta['mensaje_resultado'] = 'No se pudo procesar el mensaje. Chequee su conexión a internet.';
@@ -137,21 +137,18 @@ class ChatbotController extends AppController {
 				}
 				
 				$respuesta_ms_array = array();
-				$respuesta_ms_array = json_decode($respuesta_ms,true);
+				$respuesta_ms_array = json_decode($respuestaCurl,true);
 				
 				$query = "INSERT INTO keywords (fk_pregunta,palabras) VALUES ";
 				
 				foreach ($respuesta_ms_array['documents'][0]['keyPhrases'] as &$keyword) {
-					$query = $query . "($result->insert_id,$keyword),";
+					$query = $query . "($id_pregunta,'$keyword'),";
 				}
 				
 				$query = rtrim($query,", ");
+
 				$link_a_db->query($query);
-			}*/
-			
-			$respuesta['mensaje_resultado'] = 'Gracias por su feedback!';
-			echo json_encode($respuesta);
-			die;
+			}
 		}
 	}	
 
