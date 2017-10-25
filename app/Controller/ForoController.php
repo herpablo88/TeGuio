@@ -32,7 +32,8 @@ class ForoController extends AppController {
     
     $item = $this->$model->findById($id);
     $respPreg = $this->Users->find('first',array('conditions'=>array('id'=> $item["Foro"]["fk_usuario"])));
-    $item["Foro"]["nombre"] =  $respPreg["Users"]["nombre"]; 
+   
+    $item["Foro"]["nombre"]  =  $respPreg["Users"]["nombre"]; 
     $item = $item["Foro"];    
     $this->set('item', $item);
 
@@ -40,8 +41,9 @@ class ForoController extends AppController {
 
     foreach ($respPost as $rp) {
  
-      $usuarioPost = $this->Users->find('first',array('conditions'=>array('id'=> $rp["RespuestasPost"]["fk_usuario"])));
-      $rp["RespuestasPost"]["nombre"] = $usuarioPost["Users"]["nombre"];
+      $usuarioPost = $this->Users->find('first',array('conditions'=>array('id'=> $rp["RespuestasPost"]["fk_usuario"])));  
+      $rp["RespuestasPost"]["nombre"]  = $usuarioPost["Users"]["nombre"];
+      $rp["RespuestasPost"]["fk_tipo"] = $usuarioPost["Users"]["fk_tipo"];
       $respuestasPost[] = $rp["RespuestasPost"];
 
     }    

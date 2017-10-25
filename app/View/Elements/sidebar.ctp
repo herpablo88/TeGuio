@@ -18,10 +18,11 @@
         <div class="collapse navbar-collapse" id="top-navbar-1">
           <ul class="nav navbar-nav navbar-right">
           
-               
-   
-         
-       <li class="dropdown">
+             <li><a href="<?=Router::url('/',true)?>">Home</a></li>
+             <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>"><i class="fa fa-globe fa-lg"></i> <span>Foro</span></a></li>
+             <li class="<?=($this->request->params['controller'] == 'users')?'active':null?>"><a href="<?=Router::url('/users/validar',true)?>"><i class="glyphicon glyphicon-plus"></i> <span>Validar Respuestas</span></a></li>
+                 
+     <!--  <li class="dropdown">
           <div id="login-panel">
                 <?php
                   if ($loggedIn) {
@@ -85,7 +86,7 @@
                 ?>
               </div>
           
-            </li>
+            </li>-->
           </ul>
         </div>
       </div>

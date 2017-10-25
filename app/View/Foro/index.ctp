@@ -27,7 +27,7 @@
                     <table class="table table-hover">
                       <tbody>
                         <?php foreach($items as $item): ?>
-                          <li class="list-group-item list-group-item-warning" style="background-color: #e7daf0"><span action-redirect btn-controller='foro' btn-action='verforo' btn-data="<?=$item[$model]['id']?>"><?=$item[$model]['descripcion']?></span></li>
+                         <a href="#" style="color: #a62594;"> <li class="list-group-item list-group-item-warning" style="background-color: #e7daf0"><span action-redirect btn-controller='foro' btn-action='verforo' btn-data="<?=$item[$model]['id']?>"><?=$item[$model]['descripcion']?></span></li></a>
                         <?php endforeach; ?>
                       </tbody>
                     </table>
@@ -69,7 +69,8 @@
                 <textarea type="text" class="form-control"  name="descripcion" placeholder="Escriba su consulta"  ></textarea>
               </div>
           </div>
-          <input type="hidden" id="user" class="form-control " name="user" value="<?=$user["id"]?>" /> 
+          <input type="hidden" id="user" class="form-control " name="user" value="1" /> 
+          <!--<input type="hidden" id="user" class="form-control " name="user" value="<?=$user["id"]?>" /> -->
           <div class="col-md-2"></div>
         </div>
         <div class="row">

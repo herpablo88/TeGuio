@@ -38,6 +38,16 @@ CREATE TABLE `cvs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `cvs`
+--
+
+LOCK TABLES `cvs` WRITE;
+/*!40000 ALTER TABLE `cvs` DISABLE KEYS */;
+INSERT INTO `cvs` VALUES (34543455,'ober','ofer',NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `cvs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `historico`
 --
 
@@ -57,6 +67,16 @@ CREATE TABLE `historico` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `historico`
+--
+
+LOCK TABLES `historico` WRITE;
+/*!40000 ALTER TABLE `historico` DISABLE KEYS */;
+INSERT INTO `historico` VALUES (34543455,2,24),(34543455,3,24),(34543455,1,31);
+/*!40000 ALTER TABLE `historico` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `keywords`
 --
 
@@ -66,9 +86,20 @@ DROP TABLE IF EXISTS `keywords`;
 CREATE TABLE `keywords` (
   `fk_pregunta` int(11) NOT NULL,
   `palabras` varchar(45) DEFAULT NULL,
+  KEY `fk_keywords_preguntas` (`fk_pregunta`),
   CONSTRAINT `fk_keywords_preguntas` FOREIGN KEY (`fk_pregunta`) REFERENCES `preguntas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `keywords`
+--
+
+LOCK TABLES `keywords` WRITE;
+/*!40000 ALTER TABLE `keywords` DISABLE KEYS */;
+INSERT INTO `keywords` VALUES (32,'maquina moledora'),(32,'hijo'),(33,'hijo'),(33,'luz fluorescente'),(34,'sierras'),(34,'hijo');
+/*!40000 ALTER TABLE `keywords` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `post`
@@ -85,8 +116,18 @@ CREATE TABLE `post` (
   `estado` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`,`fk_usuario`),
   KEY `fk_post_usuario_idx` (`fk_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post`
+--
+
+LOCK TABLES `post` WRITE;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` VALUES (1,1,'Hola! Soy mamá de Mía de 4 años. El año que viene debe comenzar el jardín… Quería saber si la maestra integradora la pone el jardín o la tengo que buscar por mi cuenta?','2017-08-25 10:20:45',NULL),(2,2,'Buenas noches, soy mamá de un nene de 4 años diagnosticado con TEA acabo de llegar a Buenos Aires, nosotros somos de Venezuela, y quisiera saber a dónde puedo acudir para obtener más información sobre la escolaridad terapias y cómo funciona todo el proceso acá.','2017-10-20 22:22:30',NULL),(3,4,'Hola a todos! Soy mamá de Lucas de 5 años. Quería saber cómo hacer para tramitar el certificado de discapacidad si no tengo obra social ni prepapaga?','2017-09-25 18:10:23',NULL),(4,5,'Buen día estoy necesitando para mi hijo con tgd un centro donde pueda hacer los tratamientos que necesita más una maestra integradora para el colegio en capital.','2017-10-25 13:15:29',NULL),(5,1,'Hola , mi pregunta es: quien es el especialista que puede dar un diagnostico si un niño es autista o no?','2017-10-25 20:30:40',NULL),(21,1,'Hola, una consulta conocen escuelas integradoras por zona Oeste ?  Gracias','2017-10-25 18:40:07',NULL);
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `preguntas`
@@ -99,8 +140,18 @@ CREATE TABLE `preguntas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(600) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `preguntas`
+--
+
+LOCK TABLES `preguntas` WRITE;
+/*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
+INSERT INTO `preguntas` VALUES (32,'mi hijo esta gritando, Una maquina moledora de cafe resopla'),(33,'mi hijo esta colapsado, hay luz fluorescente'),(34,'mi hijo esta desesperado. Las sierras de la carniceria chillan');
+/*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `respuestas`
@@ -119,8 +170,18 @@ CREATE TABLE `respuestas` (
   PRIMARY KEY (`id`),
   KEY `fk_respuestas_preguntas_idx` (`pk_pregunta`),
   CONSTRAINT `fk_respuestas_preguntas` FOREIGN KEY (`pk_pregunta`) REFERENCES `preguntas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `respuestas`
+--
+
+LOCK TABLES `respuestas` WRITE;
+/*!40000 ALTER TABLE `respuestas` DISABLE KEYS */;
+INSERT INTO `respuestas` VALUES (1,'La maquina moledora puede estar afectando su audicion, retirarlo del lugar.','0','0',32,NULL),(2,'La luz fluorescente puede estar afectando su audicion, retirarlo del lugar.','1','0',33,NULL),(3,'La sierras pueden estar afectando su audicion, retirarlo del lugar.','0','0',34,NULL),(4,'Apague la maquina','1','0',32,NULL);
+/*!40000 ALTER TABLE `respuestas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `respuestas_post`
@@ -138,8 +199,18 @@ CREATE TABLE `respuestas_post` (
   PRIMARY KEY (`id`),
   KEY `fk_respuestas_usuario_idx` (`fk_usuario`),
   CONSTRAINT `fk_respuestas_usuario` FOREIGN KEY (`fk_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `respuestas_post`
+--
+
+LOCK TABLES `respuestas_post` WRITE;
+/*!40000 ALTER TABLE `respuestas_post` DISABLE KEYS */;
+INSERT INTO `respuestas_post` VALUES (1,2,'La maestra integradora debes buscarla vos si es que lo cubre tu obra social, de lo contrario si es por estado el jardín te dará la información de la escuela especial donde obtener la maestra integradora. Si es que lo cubre tu obra social, está la ventaja de que la maestra integradora va a estar más tiempo con Mía.','2017-08-29 22:40:05',1),(2,3,'Podes comunicarte con COPIDI telef 55526500, Roque Saenz Peña 832 Piso 7 de lunes a viernes de 9-16horas','2017-10-20 22:23:39',2),(3,5,'Hola. Me sumo al pedido… Quisiera saber si alguno me puede contar como fue su experiencia tramitando la discapacidad','2017-09-30 10:11:26',3),(3,1,'Tienen que ir a la municipalidad de su partido o municipio y pedir la dirección donde tramitar el certificado de discapacidad.  En ese lugar que les indiquen les darán una planilla que deberá ser completada  por médicos del centro u hospital que ellos le asignan.','2017-09-28 19:11:28',4),(4,6,'Comunicate con FEPI, tel 49817100/8045-49823658, Av. Dias Velez 47200, Caballito','2017-10-25 14:17:39',5),(5,3,'Hola, primero debes visitar al pediatra y después te derivará la profesional pertinente. Saludos!','2017-10-25 20:31:40',6),(21,3,'Hola Romina! , la escuela 502 de Morón tiene una maestra integradora muy buena! saludos','2017-10-25 18:42:31',22);
+/*!40000 ALTER TABLE `respuestas_post` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tipos`
@@ -155,6 +226,16 @@ CREATE TABLE `tipos` (
   KEY `pk_usuario_jr_usuario_idx` (`descripcion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipos`
+--
+
+LOCK TABLES `tipos` WRITE;
+/*!40000 ALTER TABLE `tipos` DISABLE KEYS */;
+INSERT INTO `tipos` VALUES (1,'administrador'),(3,'profesional'),(2,'usuario');
+/*!40000 ALTER TABLE `tipos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -179,6 +260,16 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Romina','Gonzales',NULL,2,NULL,NULL,NULL),(2,'Andrea','Gomez',NULL,2,NULL,NULL,NULL),(3,'Ricardo','Andres',NULL,3,NULL,NULL,NULL),(4,'Ornella','Stilver',NULL,2,NULL,NULL,NULL),(5,'Rodrigo','Arnes',NULL,2,NULL,NULL,NULL),(6,'Esteban','Lound',NULL,3,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users1`
 --
 
@@ -197,6 +288,16 @@ CREATE TABLE `users1` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `users1`
+--
+
+LOCK TABLES `users1` WRITE;
+/*!40000 ALTER TABLE `users1` DISABLE KEYS */;
+INSERT INTO `users1` VALUES (1,'123','$2a$10$JO1NIP4arojxs2OrqupKQOJVquGbhgjV28XelbvSdYmn.q2kiDKQi',NULL,NULL,NULL),(2,'5678','$10$h8uYwqUETUyr8YpPwKIaJ./nFzqNr.osJgs7fiQ8.SNsTgyxwf.pu',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `users1` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuario_medico`
 --
 
@@ -210,6 +311,16 @@ CREATE TABLE `usuario_medico` (
   CONSTRAINT `fk_usuario_medico_usuario` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario_medico`
+--
+
+LOCK TABLES `usuario_medico` WRITE;
+/*!40000 ALTER TABLE `usuario_medico` DISABLE KEYS */;
+INSERT INTO `usuario_medico` VALUES (123123,'1111111');
+/*!40000 ALTER TABLE `usuario_medico` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `usuariojr`
@@ -228,6 +339,16 @@ CREATE TABLE `usuariojr` (
   CONSTRAINT `fk_usuariojr_usuario` FOREIGN KEY (`pk_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuariojr`
+--
+
+LOCK TABLES `usuariojr` WRITE;
+/*!40000 ALTER TABLE `usuariojr` DISABLE KEYS */;
+INSERT INTO `usuariojr` VALUES (34543455,'ober','ofer',35253708);
+/*!40000 ALTER TABLE `usuariojr` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -238,34 +359,4 @@ CREATE TABLE `usuariojr` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-25  0:17:39
-
-/*Carga preguntas*/
-#preguntas:
-INSERT INTO preguntas(descripcion)
-VALUES("mi hijo esta gritando, Una maquina moledora de cafe resopla");
-
-INSERT INTO preguntas(descripcion)
-VALUES("mi hijo esta colapsado, hay luz fluorescente");
-
-INSERT INTO preguntas(descripcion)
-VALUES("mi hijo esta desesperado. Las sierras de la carniceria chillan");
-
-#respuestas:
-INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La maquina moledora puede estar afectando su audicion, retirarlo del lugar.",32,0,0);
-
-INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La luz fluorescente puede estar afectando su audicion, retirarlo del lugar.",33,0,1);
-
-INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La sierras pueden estar afectando su audicion, retirarlo del lugar.",34,0,0);
-
-#keywords
-INSERT INTO keywords(fk_pregunta,palabras)
-VALUES(32,"maquina moledora"),
-(32,"hijo"),
-(33,"hijo"),
-(33,"luz fluorescente"),
-(34,"sierras"),
-(34,"hijo")
+-- Dump completed on 2017-10-25 13:44:08
