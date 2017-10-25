@@ -269,3 +269,9 @@ VALUES(32,"cafe"),
 (33,"luz fluorescente"),
 (34,"sierras"),
 (34,"hijo")
+
+#Tipos de usuarios
+INSERT INTO tipos(id,descripcion)
+VALUES(1,"Admin"),
+(2,"User"),
+(3,"Profesional")
