@@ -76,7 +76,7 @@
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-              <input type="submit" id="enviar-registro" value="Enviar" />
+              <input type="submit" id="enviar-registro"  class="btn btn-primary" value="Enviar" />
           </div>
           <div class="col-md-2"></div>
         </div>

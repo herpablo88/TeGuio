@@ -34,8 +34,13 @@
                                <td> 
                                <span class="btn btn-warning btn-sm" style="
                                     background-color: green;
+                                " ><span class='glyphicon glyphicon-thumbs-up'></span></span>
+                                <span class="btn btn-danger btn-sm" ><span class='glyphicon glyphicon-thumbs-down'></span></span>
+
+                               <!--<span class="btn btn-warning btn-sm" style="
+                                    background-color: green;
                                 " action-redirect btn-controller='usuarios' btn-action='edit' btn-data="<?=$resp['Respuestas']['id']?>"><span class='glyphicon glyphicon-thumbs-up'></span></span>
-                                <span class="btn btn-danger btn-sm" action-redirect btn-controller='usuarios' btn-action='edit' btn-data="<?=$resp['Respuestas']['id']?>"><span class='glyphicon glyphicon-thumbs-down'></span></span>
+                                <span class="btn btn-danger btn-sm" action-redirect btn-controller='usuarios' btn-action='edit' btn-data="<?=$resp['Respuestas']['id']?>"><span class='glyphicon glyphicon-thumbs-down'></span></span>-->
                              </tr>  
                                
                                  </td>

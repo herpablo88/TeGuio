@@ -18,9 +18,9 @@
         <div class="collapse navbar-collapse" id="top-navbar-1">
           <ul class="nav navbar-nav navbar-right">
           
-             <li><a href="<?=Router::url('/',true)?>">Home</a></li>
-             <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>"><i class="fa fa-globe fa-lg"></i> <span>Foro</span></a></li>
-             <li class="<?=($this->request->params['controller'] == 'users')?'active':null?>"><a href="<?=Router::url('/users/validar',true)?>"><i class="glyphicon glyphicon-plus"></i> <span>Validar Respuestas</span></a></li>
+             <li><a href="<?=Router::url('/',true)?>" style="color: #8b6f00;">Home</a></li>
+             <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>" style="color: #8b3600;"><i class=""></i> <span>Foro</span></a></li>
+             <li class="<?=($this->request->params['controller'] == 'users')?'active':null?>"><a href="<?=Router::url('/users/validar',true)?>" style="color: forestgreen;"><i class=""></i> <span>Validar</span></a></li>
                  
      <!--  <li class="dropdown">
           <div id="login-panel">
