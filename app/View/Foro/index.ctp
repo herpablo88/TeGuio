@@ -27,7 +27,7 @@
                     <table class="table table-hover">
                       <tbody>
                         <?php foreach($items as $item): ?>
-                         <a href="#" style="color: #a62594;"> <li class="list-group-item list-group-item-warning" style="background-color: #e7daf0"><span action-redirect btn-controller='foro' btn-action='verforo' btn-data="<?=$item[$model]['id']?>"><?=$item[$model]['descripcion']?></span></li></a>
+                         <a href="#" style="color: #a62594;"> <li class="list-group-item list-group-item-warning" style="background-color: "><span action-redirect btn-controller='foro' btn-action='verforo' btn-data="<?=$item[$model]['id']?>"><?=$item[$model]['descripcion']?></span></li></a>
                         <?php endforeach; ?>
                       </tbody>
                     </table>
