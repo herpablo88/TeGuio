@@ -65,7 +65,8 @@ DROP TABLE IF EXISTS `keywords`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `keywords` (
   `fk_pregunta` int(11) NOT NULL,
-  `palabras` varchar(1000) NOT NULL
+  `palabras` varchar(45) DEFAULT NULL,
+  CONSTRAINT `fk_keywords_preguntas` FOREIGN KEY (`fk_pregunta`) REFERENCES `preguntas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -114,11 +115,11 @@ CREATE TABLE `respuestas` (
   `ranking_positivo` varchar(45) DEFAULT NULL,
   `ranking_negativo` varchar(45) DEFAULT NULL,
   `pk_pregunta` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`pk_pregunta`),
+  `flag_medico` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_respuestas_preguntas_idx` (`pk_pregunta`),
-  CONSTRAINT `fk_respuestas_historico` FOREIGN KEY (`id`) REFERENCES `historico` (`fk_resp`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_respuestas_preguntas` FOREIGN KEY (`pk_pregunta`) REFERENCES `preguntas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,3 +239,33 @@ CREATE TABLE `usuariojr` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-10-25  0:17:39
+
+/*Carga preguntas*/
+#preguntas:
+INSERT INTO preguntas(descripcion)
+VALUES("mi hijo esta gritando, Una maquina moledora de cafe resopla");
+
+INSERT INTO preguntas(descripcion)
+VALUES("mi hijo esta colapsado, hay luz fluorescente");
+
+INSERT INTO preguntas(descripcion)
+VALUES("mi hijo esta desesperado. Las sierras de la carniceria chillan");
+
+#respuestas:
+INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
+VALUES("La maquina moledora puede estar afectando su audicion, retirarlo del lugar.",32,0,0);
+
+INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
+VALUES("La luz fluorescente puede estar afectando su audicion, retirarlo del lugar.",33,0,1);
+
+INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
+VALUES("La sierras pueden estar afectando su audicion, retirarlo del lugar.",34,0,0);
+
+#keywords
+INSERT INTO keywords(fk_pregunta,palabras)
+VALUES(32,"maquina moledora"),
+(32,"hijo"),
+(33,"hijo"),
+(33,"luz fluorescente"),
+(34,"sierras"),
+(34,"hijo")
