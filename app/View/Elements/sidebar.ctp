@@ -25,7 +25,6 @@
           <div id="login-panel">
                 <?php
                   if ($loggedIn) {
-
                 ?>   
                   <li><a href="<?=Router::url('/',true)?>">Home</a></li>
              <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>"><i class="fa fa-globe fa-lg"></i> <span>Foro</span></a></li>
