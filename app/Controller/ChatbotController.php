@@ -105,7 +105,55 @@ class ChatbotController extends AppController {
 		   }
 		}
 	}	   
-				     
+	
+	//public function SetearRating($id,$comentario){
+	public function SetearRating(){
+		$this->autoRender = false;//Para poder devolver un json
+		//Conectamos con la BD y verificamos si falló
+		$link_a_db = $this->ConnectToDB();
+		
+		if($link_a_db == null){
+			$respuesta['mensaje_resultado'] = 'Fallo conexion con la base';
+			echo json_encode($respuesta);
+			die;
+		}
+		
+		if ($this->request->is('post')) {
+			$result = $link_a_db->query("UPDATE respuestas SET ranking_positivo = ranking_positivo + 1 WHERE id={$this->data['id']}");
+		}else{
+			$result = $link_a_db->query("UPDATE respuestas SET ranking_negativo = ranking_negativo + 1 WHERE id={$this->data['id']}");
+			
+			/*if($comentario != ""){
+				$result = $link_a_db->query("INSERT INTO preguntas (descripcion) VALUES('{$this->data['pregunta_realizada']})");
+				$result = $link_a_db->query("INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo,flag_medico)
+											VALUES('{$this->data['comentario']}',{$result->->insert_id},1,0,0);");
+				
+				$respuestaCurl = $this->postCurlRequest($this->data['comentario']);
+				 
+				if($respuestaCurl == false){
+					$respuesta['mensaje_resultado'] = 'No se pudo procesar el mensaje. Chequee su conexiÃ³n a internet.';
+					echo json_encode($respuesta);
+					die;
+				}
+				
+				$respuesta_ms_array = array();
+				$respuesta_ms_array = json_decode($respuesta_ms,true);
+				
+				$query = "INSERT INTO keywords (fk_pregunta,palabras) VALUES ";
+				
+				foreach ($respuesta_ms_array['documents'][0]['keyPhrases'] as &$keyword) {
+					$query = $query . "($result->insert_id,$keyword),";
+				}
+				
+				$query = rtrim($query,", ");
+				$link_a_db->query($query);
+			}*/
+			
+			$respuesta['mensaje_resultado'] = 'Gracias por su feedback!';
+			echo json_encode($respuesta);
+			die;
+		}
+	}	
 
     //Funciones
 	function postCurlRequest($texto) {
@@ -145,6 +193,24 @@ class ChatbotController extends AppController {
 		curl_close($ch);
 		 
 		return $output;
+	}
+	
+	//Conectar con BD
+	function ConnectToDB(){
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = 'teguio';
+	
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+	
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+	
+		return $conn;
 	}
 
 } 
