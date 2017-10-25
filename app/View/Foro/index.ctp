@@ -13,10 +13,10 @@
             <div class="box-header with-border" style="text-align: left">
               <ul class="list-group">
                 <li class="list-group-item list-group-item-success"> 
-                   <a href="#" data-toggle="modal" data-target="#particular-modal-foro"><h4>Realizar Consulta</h4></a>
+                   <a href="#" data-toggle="modal" data-target="#particular-modal-foro"><h4 style=" color: #14830f;">Realizar Consulta</h4></a>
                 </li>
                 <li data-toggle="collapse" data-target="#service" class="list-group-item list-group-item-info collapsed">
-                  <a href="#"></i><h4> Listado del Foro </h4><span class="arrow"></span></a>
+                  <a href="#"></i><h4 style="color: #342c6c;"> Listado del Foro </h4><span class="arrow"></span></a>
                 </li>  
                 <ul class="sub-menu collapse col-md-12" id="service">
                   <?php if (empty($items)):
@@ -51,6 +51,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
         <h3 class="modal-title" id="modal-title">Nueva Consulta a la Comunidad</h3>
       </div>
       <div class="modal-body">
