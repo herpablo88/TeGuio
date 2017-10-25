@@ -5,6 +5,7 @@
  */ 
 var interaccion_con_chatbot = 0; 
 var concatenacion_situacion = "";
+var pregunta_realizada = "";//variable usada para gurdar la pregunta del usuario y mandarla si no funciono la respuesta
 
 (function () {
     var Message;
@@ -49,7 +50,10 @@ var concatenacion_situacion = "";
         $('.send_message').click(function (e) {
 
         	if(interaccion_con_chatbot < 2){
-        		concatenacion_situacion = concatenacion_situacion  + '.' + getMessageText();        		
+        		concatenacion_situacion = concatenacion_situacion  + '.' + getMessageText(); 
+        		if(interaccion_con_chatbot == 0){
+            		pregunta_realizada = getMessageText();
+        		}
         		sendMessage(getMessageText(),'right');
         		interaccion_con_chatbot = interaccion_con_chatbot + 1;
         		if(interaccion_con_chatbot == 1){
@@ -70,8 +74,11 @@ var concatenacion_situacion = "";
     			success: function(resultado){
                     interaccion_con_chatbot = 0;
     					if(resultado['mensaje_resultado'] != 'OK'){
-    						return sendMessage(resultado['mensaje_resultado'],'left');
-    						sendMessage('En que te puedo ayudar? Describeme la situacion','left');
+    						sendMessage(resultado['mensaje_resultado'],'left');
+    						setTimeout(function() { 
+        						$('.messages').empty();
+        						sendMessage('En que te puedo ayudar? Describeme la situacion','left');
+    							}, 3000);
     					}
     					
     					var respuesta_medico = "";
@@ -79,7 +86,7 @@ var concatenacion_situacion = "";
     						respuesta_medico = "<p><b>Esta respuesta fue validada por un profesional</b></p>";
     					}
     					
-    					sendMessage("<p>La soluci&oacute;n es:</p><p> " + resultado['respuesta_elegida'][0]['texto'] + "</p>"+ respuesta_medico + "<p>Funcion&oacute;?</p><button value='si' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",1);' >Si</button><button value='no' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida']['id'] + ",0);'>No</button>",'left');
+    					sendMessage("<p>La soluci&oacute;n es:</p><p> " + resultado['respuesta_elegida'][0]['texto'] + "</p>"+ respuesta_medico + "<p>Funcion&oacute;?</p><button value='si' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida'][0]['id'] + ",1);' >Si</button><button value='no' onclick ='EnviarRespuesta(" + resultado['respuesta_elegida'][0]['id'] + ",0);'>No</button>",'left');
     			},
     			error: function() {
                         alert("Error, no se pudo enviar el texto.");
@@ -96,6 +103,27 @@ var concatenacion_situacion = "";
     });
 }.call(this));
 
-function EnviarRespuesta(rta){
-	alert("definir EnviarRespuesta");
+function EnviarRespuesta(id_rta,accion){
+	var modo = "POST";
+	var comentario = "nocomment";
+	if(accion == 0){
+		comentario = prompt("Por favor describa cómo resolvió la situación de ser posible", "Pedido de ayuda");
+		modo = "DELETE";
+	}
+
+	$.ajax({
+	    url:  "Chatbot/SetearRating",
+	    type: modo,
+	    data: { "id":id_rta,
+	    		"pregunta_realizada":pregunta_realizada,
+	    		"comentario":comentario
+	    },
+		success: function(resultado){
+					alert('Muchas Gracias por su colaboración!');
+		},
+		error: function() {
+                alert("Error, no se pudo enviar el texto.");
+        }
+	});
+	
 }
