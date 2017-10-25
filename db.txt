@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: db_teguio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.9-MariaDB
+-- Server version 5.5.5-10.1.9-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -65,8 +65,7 @@ DROP TABLE IF EXISTS `keywords`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `keywords` (
   `fk_pregunta` int(11) NOT NULL,
-  `palabras` varchar(45) DEFAULT NULL,
-  CONSTRAINT `fk_keywords_preguntas` FOREIGN KEY (`fk_pregunta`) REFERENCES `preguntas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `palabras` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,7 +84,7 @@ CREATE TABLE `post` (
   `estado` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`,`fk_usuario`),
   KEY `fk_post_usuario_idx` (`fk_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,12 +114,11 @@ CREATE TABLE `respuestas` (
   `ranking_positivo` varchar(45) DEFAULT NULL,
   `ranking_negativo` varchar(45) DEFAULT NULL,
   `pk_pregunta` int(11) NOT NULL,
-  `flag_medico` int(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`pk_pregunta`),
   KEY `fk_respuestas_preguntas_idx` (`pk_pregunta`),
   CONSTRAINT `fk_respuestas_historico` FOREIGN KEY (`id`) REFERENCES `historico` (`fk_resp`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_respuestas_preguntas` FOREIGN KEY (`pk_pregunta`) REFERENCES `preguntas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +137,7 @@ CREATE TABLE `respuestas_post` (
   PRIMARY KEY (`id`),
   KEY `fk_respuestas_usuario_idx` (`fk_usuario`),
   CONSTRAINT `fk_respuestas_usuario` FOREIGN KEY (`fk_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,9 +237,4 @@ CREATE TABLE `usuariojr` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-23 22:51:47
-
-#Eliminar contraint de que pida el id de histórico ya que el histórico pide ya la respuestaa
-
-ALTER TABLE respuestas
-  DROP FOREIGN KEY fk_respuestas_historico
+-- Dump completed on 2017-10-25  0:17:39

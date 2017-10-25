@@ -45,9 +45,9 @@ class ForoController extends AppController {
       $respuestasPost[] = $rp["RespuestasPost"];
 
     }    
-  
-    $this->set('respuestasPost', $respuestasPost);
-    
+    if(!empty($respuestasPost)){
+      $this->set('respuestasPost', $respuestasPost);
+    } 
       if ($this->request->is('post')) {
         $toSave = array(
             'fk_posts'       => $id,
@@ -55,7 +55,7 @@ class ForoController extends AppController {
             'descripcion'    => $this->data['descripcion'],
             'fecha'          => date("y-m-d H:i:s")
         );
-
+      
         $saved = $this->RespuestasPost->save($toSave);
 
         if (!empty($saved)) {
