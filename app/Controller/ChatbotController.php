@@ -23,7 +23,8 @@ class ChatbotController extends AppController {
                $respuestaCurl = $this->postCurlRequest($this->data['mensaje']);
                
 			   if($respuestaCurl == false){
-				$respuesta['mensaje_resultado'] = 'No se pudo procesar el mensaje. Chequee su conexión a internet.';  
+				//$respuesta['mensaje_resultado'] = 'No se pudo procesar el mensaje. Chequee su conexión a internet.';  
+				$respuesta['mensaje_resultado'] = 'HARCODEO'; 
 				echo json_encode($respuesta);
 				die;		
 			   }

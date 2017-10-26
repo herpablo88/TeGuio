@@ -13,7 +13,7 @@ INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo
 VALUES("La maquina moledora puede estar afectando su audicion, retirarlo del lugar.",32,0,0);
 
 INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
-VALUES("La luz fluorescente puede estar afectando su audicion, retirarlo del lugar.",33,0,0);
+VALUES("La luz fluorescente puede estar afectando su vision, retirarlo del lugar.",33,0,0);
 
 INSERT INTO respuestas(descripcion,pk_pregunta,ranking_negativo,ranking_positivo)
 VALUES("La sierras pueden estar afectando su audicion, retirarlo del lugar.",34,0,0);
