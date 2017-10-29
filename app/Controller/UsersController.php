@@ -299,6 +299,63 @@ class UsersController extends AppController {
 
     }  
 
+    public function SetearValidacion(){
+    	$this->autoRender = false;//Para poder devolver un json
+    	//Conectamos con la BD y verificamos si falló
+    	$link_a_db = $this->ConnectToDB();
+    	 
+    	if($link_a_db == null){
+    		$respuesta['mensaje_resultado'] = 'Fallo conexion con la base';
+    		echo json_encode($respuesta);
+    		die;
+    	}
+    	 
+    	/*$model = $this->modelClass;
+    	$this->loadModel('Respuestas');
+    	 
+    	$toSave = array(
+    			'id'        => $this->data['id'],
+    			'flag_medico'     => $this->data['validacion']
+    	);
+    	 
+    	$saved = $this->$model->save($toSave);*/
+    	 
+    	$query = "UPDATE respuestas SET flag_medico = {$this->data['validacion']} WHERE id={$this->data['id']}";
+    	
+    	/*$respuesta['mensaje_resultado'] = $query;
+    	echo json_encode($respuesta);
+    	die;*/
+    	
+    	$saved = $link_a_db->query($query);
 
+    	if (!$saved) {
+    		$respuesta['mensaje_resultado'] = 'Fallo la validacion';
+    		echo json_encode($respuesta);
+    	}else{
+    		$respuesta['mensaje_resultado'] = 'Validacion existosa';
+    		echo json_encode($respuesta);
+    	}
+    	
+    	
+    }
+    
+    //Conectar con BD
+    function ConnectToDB(){
+    	$servername = "localhost";
+    	$username = "root";
+    	$password = "";
+    	$dbname = 'teguio';
+    
+    	// Create connection
+    	$conn = new mysqli($servername, $username, $password, $dbname);
+    
+    	// Check connection
+    	if ($conn->connect_error) {
+    		die("Connection failed: " . $conn->connect_error);
+    	}
+    
+    	return $conn;
+    }
+    
 }
 ?>
