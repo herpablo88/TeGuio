@@ -9,6 +9,10 @@
 
             <!-- Main content -->
         <section class="content ">
+            <div class="separated">
+                <a class="btn btn-default btn-flat"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'),true)?>"><?php echo __('+ Agregar ');?></a>
+            </div>
+
             <?php if (empty($items)):
             print('<p>No hay resultados para mostrar.</p>');
             else :

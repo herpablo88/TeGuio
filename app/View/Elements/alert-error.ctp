@@ -1,1 +1,1 @@
-<script>$.growl.error({message:'<?=$message?>','title':'Ups!'});</script>
+<script>$.growl.error({message:'<?=$message?>','title':'Error!'});</script>

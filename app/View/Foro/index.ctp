@@ -70,8 +70,8 @@
                 <textarea type="text" class="form-control"  name="descripcion" placeholder="Escriba su consulta"  ></textarea>
               </div>
           </div>
-          <input type="hidden" id="user" class="form-control " name="user" value="1" /> 
-          <!--<input type="hidden" id="user" class="form-control " name="user" value="<?=$user["id"]?>" /> -->
+     
+          <input type="hidden" id="user" class="form-control " name="user" value="<?=$user["id"]?>" /> 
           <div class="col-md-2"></div>
         </div>
         <div class="row">

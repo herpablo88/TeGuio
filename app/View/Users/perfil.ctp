@@ -9,11 +9,12 @@
         <section class="content row">
             <div class="col-sm-12">
                 <div class="box box-primary">
+                <?php if ($user['fk_tipo']=='2') {  ?> 
                 <div class="box-header with-border" style="text-align: center">
-                     <label for="exampleInputEmail1">VER/CARGAR PERSONAS A CARGO</label>
-
-                        <span class="btn btn-warning btn-xs" action-redirect btn-controller='usuariojr' btn-action='index' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon glyphicon-user'></span></span>
+                    <label for="exampleInputEmail1">VER/CARGAR PERSONAS A CARGO</label>
+                    <span class="btn btn-warning btn-xs" action-redirect btn-controller='usuariojr' btn-action='index' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon glyphicon-user'></span></span>
                 </div>
+                <?php }  ?> 
                 <form role="form" action="" method="post"  enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="col-md-12">

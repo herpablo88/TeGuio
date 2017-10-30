@@ -19,6 +19,7 @@ class UsersController extends AppController {
     $this->loadModel('Usuariojr');
     $this->loadModel('Historico');
     $this->loadModel('Post');
+    $this->loadModel('UsuarioMedico');
     $this->loadModel('Tipos');
     $this->loadModel('RespuestasPost'); 
 }
@@ -27,16 +28,17 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {   
                 $user = $this->Auth->User();  
-                $this->Session->setFlash(Configure::read('m.flash/success_login'), 'alert');
+                $this->Session->setFlash('Bienvenido/da '.$user['nombre'], 'alert');
                 return $this->redirect(Router::url('/foro', true));
             }
-            $this->Session->setFlash(Configure::read('m.flash/invalid_login'), 'alert-error');
+            $this->Session->setFlash('VERIFIQUE LOS DATOS Y VUELVA A INTENTARLO', 'alert-error');
             return $this->redirect(Router::url('/', true));
-        }
+        }  
     }
 
     public function logout() {
-        return $this->redirect($this->Auth->logout());
+        $this->Auth->logout();
+        return $this->redirect(Router::url('/', true));
     }
 
    /* public function index() {
@@ -159,7 +161,7 @@ class UsersController extends AppController {
               'nombre'    => $this->data['nombre'],
               'apellido'  => $this->data['apellido'],
             //  'dni'       => $this->data['dni'], 
-              'fk_tipo'   => $this->data['fk_tipo'],
+            //  'fk_tipo'   => $this->data['fk_tipo'],
               'username'  =>   $id,
             );
             
@@ -191,6 +193,8 @@ class UsersController extends AppController {
           $this->Historico->delete($idcvjr["Usuariojr"]["id"]);
         }
         
+        
+        $this->UsuarioMedico->deleteAll(array('id'=> $id));
     
         $this->Post->deleteAll(array('fk_usuario'=> $id));
 
@@ -200,7 +204,7 @@ class UsersController extends AppController {
       
         $this->$model->delete($id);
 
-        $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert-error');
+        $this->Session->setFlash('Usuario eliminado', 'alert');
 
         return $this->redirect(array(
             'action' => 'index'
@@ -262,7 +266,7 @@ class UsersController extends AppController {
 
             if (!empty($guardar)) {
                 $this->Session->setFlash('REGISTRO EXITOSO en TEGUIO,inclusion autismo', 'alert');
-                return $this->redirect(array('action'=> 'index'));
+                return $this->redirect(Router::url('/', true));
             }
 
            }else{
@@ -274,7 +278,7 @@ class UsersController extends AppController {
     }
 
 
-     public function validar(){
+    public function validar(){
     
       $model = $this->modelClass;
       $this->loadModel('Preguntas');
@@ -282,22 +286,77 @@ class UsersController extends AppController {
       
       $preguntas = $this->Preguntas->find('all');
       $validar = array();
-
       foreach ($preguntas as $key => $preg) {
        
         $respuestas = $this->Respuestas->find('all',array('conditions'=>array('pk_pregunta'=> $preg["Preguntas"]["id"])));
-
         $val["Preguntas"]  = $preg["Preguntas"];
         $val["Preguntas"]["respuestas"] = $respuestas;
  
         $validar[] = $val; 
-
          
       }
          
        $this->set('items', $validar);
-
     }  
+
+
+    public function SetearValidacion(){
+      $this->autoRender = false;//Para poder devolver un json
+      //Conectamos con la BD y verificamos si falló
+      $link_a_db = $this->ConnectToDB();
+       
+      if($link_a_db == null){
+        $respuesta['mensaje_resultado'] = 'Fallo conexion con la base';
+        echo json_encode($respuesta);
+        die;
+      }
+       
+      /*$model = $this->modelClass;
+      $this->loadModel('Respuestas');
+       
+      $toSave = array(
+          'id'        => $this->data['id'],
+          'flag_medico'     => $this->data['validacion']
+      );
+       
+      $saved = $this->$model->save($toSave);*/
+       
+      $query = "UPDATE respuestas SET flag_medico = {$this->data['validacion']} WHERE id={$this->data['id']}";
+      
+      /*$respuesta['mensaje_resultado'] = $query;
+      echo json_encode($respuesta);
+      die;*/
+      
+      $saved = $link_a_db->query($query);
+      if (!$saved) {
+        $respuesta['mensaje_resultado'] = 'Fallo la validacion';
+        echo json_encode($respuesta);
+      }else{
+        $respuesta['mensaje_resultado'] = 'Validacion existosa';
+        echo json_encode($respuesta);
+      }
+      
+      
+    }
+    
+    //Conectar con BD
+    function ConnectToDB(){
+      $servername = "localhost";
+      $username = "root";
+      $password = "";
+      $dbname = 'teguio';
+    
+      // Create connection
+      $conn = new mysqli($servername, $username, $password, $dbname);
+    
+      // Check connection
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+    
+      return $conn;
+    }
+    
 
 
 }

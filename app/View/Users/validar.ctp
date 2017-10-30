@@ -1,3 +1,4 @@
+<?php echo $this->Html->script('validacion_preguntas_pro'); ?>
 <div class="features-container section-container">
     <div class="container">
         <section class="content-header" style="padding-top:74px">
@@ -31,11 +32,16 @@
                              <tr style="text-align: -webkit-left;">
                                <td>
                                <?=$resp['Respuestas']['descripcion']?>
+                               <?php
+                                    if($resp['Respuestas']['flag_medico'] == 1){
+                                        echo "<b>(Validada positivamente)</b>";
+                                    }
+                               ?>
                                <td> 
                                <span class="btn btn-warning btn-sm" style="
                                     background-color: green;
-                                " ><span class='glyphicon glyphicon-thumbs-up'></span></span>
-                                <span class="btn btn-danger btn-sm" ><span class='glyphicon glyphicon-thumbs-down'></span></span>
+                                " ><span class='glyphicon glyphicon-thumbs-up' onclick="ValidarRespuesta(<?=$resp['Respuestas']['id']?>,1)"></span></span>
+                                <span class="btn btn-danger btn-sm" ><span class='glyphicon glyphicon-thumbs-down' onclick="ValidarRespuesta(<?=$resp['Respuestas']['id']?>,0)"></span></span>
 
                                <!--<span class="btn btn-warning btn-sm" style="
                                     background-color: green;
@@ -61,7 +67,5 @@
         </section>
     </div>
 </div>
-
-
 
 

@@ -9,25 +9,22 @@ class PreguntasController extends AppController {
       $this->set('model',$model);
      }
   
-     /* cuando guardo la pregunta se guarda en fk_preg , junto con el dni */
-      /* se muestra el listado del dni que se envia */
+
     public function index($id){
-    
+  
       $model = $this->modelClass;
       $this->loadModel('Usuariojr');
-      $this->loadModel('Historico');
       
       $usuariojr = $this->Usuariojr->find('first',array('conditions'=>array('id'=> $id),'fields'=>'id'));
       $this->set('usuariojr', $usuariojr);
-     
-      $historico = $this->Historico->find('all',array('conditions'=>array('id'=> $usuariojr["Usuariojr"])));
-      $this->set('historico', $historico);
+   
+      $preguntas = $this->$model->find('all',array('conditions'=>array('usuariojr'=> $usuariojr["Usuariojr"]["id"])));
+      $this->set('preguntas', $preguntas);
 
       $id = array();
-      foreach ($historico as $key => $preg_id) {
-         $id[] = $preg_id["Historico"]["fk_preg"];
-      } 
-
+      foreach ($preguntas as $key => $preg_id) {
+         $id[] = $preg_id["Pregunta"]["id"];
+      }
       $this->Paginator->settings = array(
         'limit' => $this->defaultLimit() ,
         'order' => "$model.id ASC",
@@ -37,29 +34,25 @@ class PreguntasController extends AppController {
        $data = $this->Paginator->paginate($model);
 
        $this->set('items', $data);
+         $model = $this->modelClass;
+
+     
 
     }  
 
-     public function add($id_usuariojr,$idusuario){
-      $this->loadModel('Historico');
+     public function add($id_usuariojr){
+     
       $model = $this->modelClass;
         if ($this->request->is('post')) {
           
             $toSave = array(
-                'descripcion' => $this->data['descripcion'],
+                'descripcion'  => $this->data['descripcion'],
+                'usuariojr' => $id_usuariojr,
             );
 
             $savedPregunta = $this->$model->save($toSave);
-
             if (!empty($savedPregunta)) {
-                        
-                $toSaveRelacion = array(
-                  'id'      => $id_usuariojr,
-                  'fk_preg' => $this->$model->id,
-                );
-
-                 $relacion = $this->Historico->save($toSaveRelacion);
-  
+            
                 $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert');
                 return $this->redirect(array('action'=> 'index/'.$id_usuariojr));
             } 
@@ -101,16 +94,53 @@ class PreguntasController extends AppController {
 
      }
 
+     
+     public function respuestas($id,$id_usuariojr){
+        $model = $this->modelClass;
+        $this->loadModel('Respuestas');
+        $pregunta = $this->$model->find('first',array('conditions'=>array('id'=> $id)));
+        $this->set('pregunta', $pregunta);
+        $this->set('id_usuariojr', $id_usuariojr);
+       $respuestas = $this->Respuestas->find('all',array('conditions'=>array('pk_pregunta'=> $id)));
+        $this->set('respuestas', $respuestas);
+        
+        if ($this->request->is('post')) {
+            
+            $toSave = array(
+                'descripcion'  => $this->data['descripcion'],
+                'pk_pregunta'  => $this->data['pk_pregunta'], 
+                'ranking_positivo'  => $this->data['pk_pregunta'],
+                'ranking_negativo'  => $this->data['pk_pregunta'],
+                      
+            );
+            
+            $saved = $this->Respuestas->save($toSave);
+
+            if (!empty($saved)) {
+                          
+                $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert');
+                return $this->redirect(array('action'=> 'respuestas/'.$id.'/'.$id_usuariojr));
+            } 
+            else {
+                $this->Session->setFlash(Configure::read('m.flash/form_not_saved') , 'alert');
+            }
+        }
+        $item = $this->$model->findById($id);
+        $this->set('item', $item);
+
+     }
+  
+ 
 
      public function delete($id,$id_usuariojr){
 
-        $this->loadModel('Historico');
+        $this->loadModel('Respuestas');
         $model = $this->modelClass;
-        $this->Historico->deleteAll(array('fk_preg'=> $id));
+        $this->Respuestas->deleteAll(array('pk_pregunta'=> $id));
         $this->$model->delete($id);
-        $this->Session->setFlash(Configure::read('m.flash/form_saved') , 'alert-error');
+         $this->Session->setFlash('Factor de Crisis Eliminado', 'alert');
         return $this->redirect(array(
-            'action' => 'index'.$id_usuariojr
+            'action' => 'index'.'/'.$id_usuariojr
         ));
      }
 
