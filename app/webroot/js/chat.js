@@ -73,6 +73,11 @@ var pregunta_realizada = "";//variable usada para gurdar la pregunta del usuario
     		    },
     			success: function(resultado){
                     interaccion_con_chatbot = 0;
+						//Hardcodeado para la feria
+						if(resultado['mensaje_resultado'] == 'HARCODEO'){
+							return sendMessage("<p>No hay Internet. Respuesta modelo:</p><p>La soluci&oacute;n es:</p><p> " + "La luz fluorescente puede estar afectando su audicion, retirarlo del lugar." + "</p>"+ "<p><b>Esta respuesta fue validada por un profesional</b></p>" + "<p>Funcion&oacute;?</p><button value='si' onclick ='EnviarRespuesta(" + '1' + ",1);' >Si</button><button value='no' onclick ='EnviarRespuesta(" + "1" + ",0);'>No</button>",'left');
+						}
+						
     					if(resultado['mensaje_resultado'] != 'OK'){
     						sendMessage(resultado['mensaje_resultado'],'left');
     						setTimeout(function() { 
@@ -80,7 +85,7 @@ var pregunta_realizada = "";//variable usada para gurdar la pregunta del usuario
         						sendMessage('En que te puedo ayudar? Describeme la situacion','left');
     							}, 3000);
     					}
-    					
+						
     					var respuesta_medico = "";
     					if(resultado['respuesta_elegida'][0]['flag_medico'] == 1){
     						respuesta_medico = "<p><b>Esta respuesta fue validada por un profesional</b></p>";

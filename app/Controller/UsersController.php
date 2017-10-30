@@ -121,7 +121,7 @@ class UsersController extends AppController {
             $toSave = array(
               'id'       => $id,
               'email'    => $this->data['email'], 
-           //   'password' => $this->data['contraseÃ±a'],
+           //   'password' => $this->data['contraseña'],
               'nombre'   => $this->data['nombre'],
               'apellido' => $this->data['apellido'],
              // 'dni'      => $this->data['dni'], 
@@ -302,7 +302,7 @@ class UsersController extends AppController {
 
     public function SetearValidacion(){
       $this->autoRender = false;//Para poder devolver un json
-      //Conectamos con la BD y verificamos si fallÃ³
+      //Conectamos con la BD y verificamos si falló
       $link_a_db = $this->ConnectToDB();
        
       if($link_a_db == null){
