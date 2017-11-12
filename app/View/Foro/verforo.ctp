@@ -17,7 +17,8 @@
                 <div class="col-sm-2">
                   
                   <div class="review-block-name" >
-                  <a href="#"><strong><?=strtoupper($item['nombre'])?></strong></a></div>
+                  <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+					<strong><?=strtoupper($item['nombre'])?></strong></a></div>
 
                   <div class="review-block-date" style="color: gray;"><?=$item['fecha']?><br/><?php 
                   $fecha1 = new DateTime(date("y-m-d H:i:s"));
@@ -60,7 +61,8 @@
                 <div class="col-sm-3"> 
                   <span class="label label-default " style="background-color: #daded2;
     color: #7f3e7c;" > &#9733; Consejo de profesional &#9733; </span>
-                   <div class="review-block-name"><a href="#" style="color: #a62594;"><?=strtoupper($itemRepsuestas["nombre"])?></a></div>
+                   <div class="review-block-name respuestas-post">
+				   <a href="#" style="color: #a62594;"><i class="fa fa-user-md" aria-hidden="true"></i><?=strtoupper($itemRepsuestas["nombre"])?></a></div>
                  <?php }else{ ?>
                    <div class="row" style="background-color: ghostwhite;">
                    <div class="col-sm-3">
@@ -112,7 +114,7 @@
                 </div>
             </div>
             <div class="box-footer" >
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btnTeguio">Enviar</button>
             </div>
           </form>
         </div>

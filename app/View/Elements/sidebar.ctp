@@ -60,24 +60,29 @@
                 <a class="dropdown-toggle btn btn-link-3" data-toggle="dropdown" href="#">Ingresar
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                 <li><a href="#" id="register" data-toggle="modal" data-target="#registro-modal">Registrarme</a></li>
-             
+                
                   <li>
                   <?php 
                     echo $this->Form->create(null, array('url' => array('controller' => 'Users', 'action' => 'login'))); 
                   ?>
-                   <p class="title">Iniciar Sesion</p>
+					<p class="title">Iniciar Sesion</p>
                    <div class="users form">
                      <?php echo $this->Session->flash('auth'); ?>
                      <?php echo $this->Form->create('User'); ?>
                       <fieldset>
-                       <?php echo $this->Form->input('username');
-                            echo $this->Form->input('password');
+                       <?php echo $this->Form->input('username', array( 'label' => 'DNI' ));
+                            echo $this->Form->input('password', array( 'label' => 'Contraseña' ));
                         ?>
                       </fieldset>
-                     <?php echo $this->Form->end(__('Login')); ?>
+                     <?php echo $this->Form->end(array('label' => __('Ingresar', true), 'class' => 'btnTeguio')); ?>
                     </div>
                   </li>
+				  
+				   <li>
+					<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+					<a href="#" id="register" data-toggle="modal" data-target="#registro-modal">Registrarme</a>
+				  </li>
+             
                 </ul>
                 <?php
                   }

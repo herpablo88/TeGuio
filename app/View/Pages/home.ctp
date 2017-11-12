@@ -17,7 +17,7 @@
                                     <div class="buttons">
                                         <img src="img/iconos.png"  class="iconotg img-responsive">
                                     </div>
-                                      <div class="title">ChatBox</div></div>
+                                      <div class="title"><i class="fa fa-comments-o" aria-hidden="true"></i>ChatBox</div></div>
                                      <ul class="messages"></ul>
                                      <div class="bottom_wrapper clearfix">
                                       <div class="message_input_wrapper">
@@ -45,7 +45,9 @@
                     </div>
                 </div>
             </div>
-        <div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 470px; width: 1263px; z-index: -999998; position: absolute;"><img src="img/puzzle.jpg" width="1263" style="    filter: brightness(0.8);position: absolute; margin: 0px; padding: 0px; border: none; width: 1263px; height: 842px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -186px;" height="842"></div>
+        <div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 470px; width: 100%; z-index: -999998; position: absolute;">
+			<img src="img/puzzle.jpg" width="100%" style="    filter: brightness(0.8);position: absolute; margin: 0px; padding: 0px; border: none; width: 100%; height: 842px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -186px;" height="842">
+		</div>
 
           <!-- Features -->
         <div class="features-container section-container">

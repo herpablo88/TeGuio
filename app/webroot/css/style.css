@@ -222,4 +222,52 @@ only screen and (                min-resolution: 2dppx) {
     image-rendering: -webkit-optimize-contrast;
     margin-left: -2%;
 }
+ 
+/* Nuevos */
+#myFooter { padding-top: 0 !important; padding-bottom: 0 !important;}
+#myFooter .col-sm-3 h5 {color: #00b7d7;}
+#myFooter .col-sm-3 a:hover, #myFooter .col-sm-3 a:active, #myFooter .col-sm-3 a:focus, #myFooter .col-sm-3 a:active:focus {color: #00b7d7;}
+#myFooter .second-bar .logo a {color: #00b7d7 !important;}
 
+.features-box h3 {color: #00b7d7; font-weight: 600;}
+
+@media (min-width: 993px;) {
+	.chat_window {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.btnTeguio { background: #00b7d7; color: #fff; font-weight: 600; padding: 3%; border-radius: 5px;
+    padding-left: 5%; padding-right: 5%; margin-top: 5%; border-style: none; }
+
+#login-panel .dropdown-menu {padding: 20%; border-radius: 5px;}
+#login-panel .dropdown-menu li {margin-top: 10%;} 
+#login-panel .dropdown-menu li i {display: inline-block;}
+#login-panel .dropdown-menu li a #register {display: inline-block !important; padding-left: 0; color: #1c5d83;}
+#login-panel .dropdown-menu li form p {color: #00b7d7; font-weight: 600;}
+#login-panel .dropdown-menu li form label {color: #1c5d83; margin-bottom: 0;}
+#login-panel .dropdown-menu li form input {display: block; border-radius: 5px; margin-bottom: 5%;} 
+
+.ul.navbar-nav li:first-child a {color: #1c5d83 !important;}
+.dropdown-toggle.btn.btn-link-3:hover, .dropdown-toggle.btn.btn-link-3:focus, .dropdown-toggle.btn.btn-link-3:active,
+.dropdown-toggle.btn.btn-link-3:active:focus {background: #00b7d7;}
+
+
+#particular-modal-foro .modal-title {color: #00b7d7; font-weight: 600;}
+#particular-modal-foro label {color: #1c5d83;}
+#particular-modal-foro textarea {border-radius: 5px; margin-bottom: 0;}
+
+#service .list-group-item-warning { background: #fff; color: #1c5d83; }
+#service .list-group-item-warning i { color: #00b7d7; font-size: large; margin-right: 1%; }
+
+.content-header .box-title {color: #00b7d7; font-weight: 600;}
+.box-body span {color: #1c5d83; font-weight: 600;}
+.box-body textarea {border-radius: 5px; width: 80%; margin-left: auto; margin-right: auto;}
+.box-body form {margin-top: 5%;}
+.box-footer {border: none !important;}
+.box-footer .btnTeguio{padding: 1%; padding-left: 3%; padding-right: 3%; margin-top: 0;}
+
+.review-block-name a i {margin-right: 1%;}
+.review-block-name.respuestas-post a {color: #1c5d83 !important;}
