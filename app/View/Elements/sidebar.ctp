@@ -31,7 +31,7 @@
                   <?php } ?>
 
                    <li class="<?=($this->request->params['controller'] == 'foro')?'active':null?>"><a href="<?=Router::url('/foro',true)?>" style="color: #8b3600;"><i class=""></i> <span>Foro</span></a></li>
-                   <li ><span style="margin: 6%" class="btn btn-default" action-redirect btn-controller='users' btn-action='perfil' btn-data="<?=$user['id']?>"><span class='glyphicon glyphicon-user'> MI PERFIL</span></span></li>  
+                   <li ><span style="margin: 6%" class="btn btn-default" action-redirect btn-controller='users' btn-action='perfil' btn-data="<?=$user['id']?>"><span class='glyphicon glyphicon-user'> PERFIL</span></span></li>  
                   
                   <li >
                     <div style="padding-top: 6px;padding-left: 22px;">

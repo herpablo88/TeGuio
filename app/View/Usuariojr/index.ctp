@@ -1,5 +1,5 @@
 <div class="features-container section-container">
-    <div class="container">
+    <div class="container" id="usuariosAcargo">
         <section class="content-header" style="padding-top:74px">
             <ol class="breadcrumb">
                <li class="active"><a href="<?=Router::url('/usuariojr',true)?>">UsuarioJr</a></li>
@@ -10,7 +10,7 @@
             <!-- Main content -->
         <section class="content ">
             <div class="separated">
-                <a class="btn btn-default btn-flat"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'),true)?>"><?php echo __('+ Agregar ');?></a>
+                <a class="btnTeguio" id="agregarDependiente" style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'),true)?>"><?php echo __('+ Agregar ');?></a>
             </div>
 
             <?php if (empty($items)):

@@ -8,12 +8,12 @@
         </section>
         <section class="content row">
             <div class="col-sm-12">
-                <div class="box box-primary">
+                <div class="box box-primary" id="boxPerfil">
                 <?php if ($user['fk_tipo']=='2') {  ?> 
                 <div class="box-header with-border" style="text-align: center">
-                    <label for="exampleInputEmail1">VER/CARGAR PERSONAS A CARGO</label>
                     <span class="btn btn-warning btn-xs" action-redirect btn-controller='usuariojr' btn-action='index' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon glyphicon-user'></span></span>
-                </div>
+					<label for="exampleInputEmail1">VER/CARGAR PERSONAS A CARGO</label>
+				</div>
                 <?php }  ?> 
                 <form role="form" action="" method="post"  enctype="multipart/form-data">
                     <div class="box-body">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="box-footer" >
-                        <button type="submit" class="btn btn-primary">Modificar</button>
+                        <button type="submit" class="btnTeguio">Modificar</button>
                     </div>
                  </form>
                 </div>

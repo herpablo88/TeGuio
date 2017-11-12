@@ -66,7 +66,8 @@
                  <?php }else{ ?>
                    <div class="row" style="background-color: ghostwhite;">
                    <div class="col-sm-3">
-                    <div class="review-block-name "><a href="#" style="color: #20853c;border-radius: 10px;"><?=strtoupper($itemRepsuestas["nombre"])?></a></div>
+                    <div class="review-block-name respuestas-post"><a href="#" style="color: #20853c;border-radius: 10px;">
+					<i class="fa fa-puzzle-piece" aria-hidden="true"></i><?=strtoupper($itemRepsuestas["nombre"])?></a></div>
                   <?php }?>  
                  
                  
