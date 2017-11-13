@@ -9,7 +9,7 @@
         </section>
 
             <!-- Main content -->
-        <section class="content ">
+        <section class="content " id="content-validar">
 
             <?php if (empty($items)):
             print('<p>No hay resultados para mostrar.</p>');
@@ -26,11 +26,11 @@
                         <?php foreach($items as $item):   ?>
                           
                         <tr style="text-align: -webkit-left;">
-                        <td><strong style="color:darkmagenta;"><?=strtoupper($item['Preguntas']['descripcion'])?></strong></td>
+                        <td><strong class="validarPregunta" ><?=strtoupper($item['Preguntas']['descripcion'])?></strong></td>
                             
                             <?php foreach($item['Preguntas']["respuestas"] as $resp):  ?>
                              <tr style="text-align: -webkit-left;">
-                               <td>
+                               <td class="validarRespuesta">
                                <?=$resp['Respuestas']['descripcion']?>
                                <?php
                                     if($resp['Respuestas']['flag_medico'] == 1){

@@ -316,3 +316,11 @@ ul.navbar-nav li #user-name {color: #00b7d7;}
 #cvUsuarioAcargo .box.box-primary form .form-group textarea {margin-top: 0;}
 #editarUsuarioAcargo .box-body label {color: #00b7d7; font-weight: 600;} 
 
+/********** Validar ***********/
+#content-validar .validarPregunta {color: #00b7d7;}
+#content-validar .validarRespuesta {color: #1c5d83;}
+#content-validar .btn.btn-warning.btn-sm span.glyphicon, #content-validar .btn.btn-danger.btn-sm span.glyphicon {color: #fff; }
+#content-validar .btn.btn-warning.btn-sm {background-color: rgba(15, 202, 15, 0.58) !important; border-radius: 20px;}
+#content-validar .btn.btn-danger.btn-sm {background-color: rgba(224, 61, 47, 0.58); border-radius: 20px;}
+#content-validar .btn.btn-warning.btn-sm:hover {border-color: green;}
+#content-validar .btn.btn-danger.btn-sm:hover {border-color: red;}

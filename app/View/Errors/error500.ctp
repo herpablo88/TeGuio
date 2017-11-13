@@ -19,6 +19,12 @@
 	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
 	<?php echo __d('cake', 'An Internal Error Has Occurred.'); ?>
 </p>
+
+<div class="container">
+	<h1 style="color: #00b7d7; font-weight: 600;"> Ha ocurrido un error </h1>
+	<h2 style="color: #1c5d83;"> Estamos trabajando para solucionarlo </h2>
+	<img src="<?=Router::url('/img/puzzle-pieces.png',true)?>"  class="img-responsive" style="margin-top: 5%; margin-left: auto; margin-right: auto;"> 
+</div>
 <?php
 if (Configure::read('debug') > 0):
 	echo $this->element('exception_stack_trace');
