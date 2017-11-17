@@ -100,7 +100,7 @@ var pregunta_realizada = "";//variable usada para gurdar la pregunta del usuario
         	
         });
         $('.message_input').keyup(function (e) {
-            if (e.which === 13) {
+            if (e.keyCode === 13) {
                 return sendMessage(getMessageText(),'right');
             }
         });
