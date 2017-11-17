@@ -1,5 +1,5 @@
 <div class="features-container section-container">
-    <div class="container">
+    <div class="container" id="nuevoUsuarioAcargo">
         <section class="content-header" style="padding-top:74px">
             <ol class="breadcrumb">
                <li class="active"><a href="<?=Router::url('/usuariojr',true)?>">Usuario Jr</a></li>
@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <div class="box box-primary">
                 <div class="box-header with-border" style="text-align: left">
-                     <label for="exampleInputEmail1">Nueva Usuario a cargo</label>
+                     <label for="exampleInputEmail1">Nuevo Usuario a cargo</label>
                 </div>
                 <form role="form" action="" method="post"  enctype="multipart/form-data">
                     <div class="box-body">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="box-footer" >
-                        <button type="submit" class="btn btn-primary">Agregar</button>
+                        <button type="submit" class="btnTeguio">Agregar</button>
                     </div>
                 </form>
                 </div>

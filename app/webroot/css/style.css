@@ -222,4 +222,105 @@ only screen and (                min-resolution: 2dppx) {
     image-rendering: -webkit-optimize-contrast;
     margin-left: -2%;
 }
+ 
+/* Nuevos */
 
+/********** Layout ***********/
+#myFooter { padding-top: 0 !important; padding-bottom: 0 !important;}
+#myFooter .col-sm-3 h5 {color: #00b7d7;}
+#myFooter .col-sm-3 a:hover, #myFooter .col-sm-3 a:active, #myFooter .col-sm-3 a:focus, #myFooter .col-sm-3 a:active:focus {color: #00b7d7;}
+#myFooter .second-bar .logo a {color: #00b7d7 !important;}
+
+ul.navbar-nav li a {color: #1c5d83 !important;}
+ul.navbar-nav li.active a {color: #00b7d7 !important;}
+.dropdown-toggle.btn.btn-link-3 {color: #fff !important;}
+.dropdown-toggle.btn.btn-link-3:hover, .dropdown-toggle.btn.btn-link-3:focus, .dropdown-toggle.btn.btn-link-3:active,
+.dropdown-toggle.btn.btn-link-3:active:focus {background: #00b7d7;}
+ul.navbar-nav li .btn.btn-default{color: #fff !important; background: #00b7d7 !important;}
+ul.navbar-nav li #user-name {color: #00b7d7;}
+
+.btnTeguio { background: #00b7d7; color: #fff; font-weight: 600; padding: 3%; border-radius: 5px;
+    padding-left: 5%; padding-right: 5%; margin-top: 5%; border-style: none; }
+
+#login-panel .dropdown-menu {padding: 20%; border-radius: 5px;}
+#login-panel .dropdown-menu li {margin-top: 10%;} 
+#login-panel .dropdown-menu li i {display: inline-block;}
+#login-panel .dropdown-menu li a#register {display: inline-block !important; padding-left: 0 !important; color: #1c5d83 !important;}
+#login-panel .dropdown-menu li form p {color: #00b7d7; font-weight: 600;}
+#login-panel .dropdown-menu li form label {color: #1c5d83; margin-bottom: 0;}
+#login-panel .dropdown-menu li form input {display: block; border-radius: 5px; margin-bottom: 5%; border: solid 1px #d2d6de;} 
+
+#registro-modal #modal-title, #particular-modal #modal-title, #profesional-modal #modal-title {color: #00b7d7; font-weight: 600;}
+#particular-modal label, #profesional-modal label {color: #1c5d83; font-weight: 600; margin-bottom: 0;}
+#particular-modal input, #profesional-modal input {border-radius: 5px !important;} 
+#particular-modal .btnTeguio, #profesional-modal .btnTeguio {margin-top: 0;}
+
+
+/********** Home ***********/
+.features-box h3 {color: #00b7d7; font-weight: 600;}
+
+@media (min-width: 993px) {
+	.chat_window {
+		width: 80% !important;
+	}
+}
+
+/********** Foro ***********/
+#particular-modal-foro .modal-title {color: #00b7d7; font-weight: 600;}
+#particular-modal-foro label {color: #1c5d83;}
+#particular-modal-foro textarea {border-radius: 5px; margin-bottom: 0;}
+
+#service .list-group-item-warning { background: #fff; color: #1c5d83; }
+#service .list-group-item-warning i { color: #00b7d7; font-size: large; margin-right: 1%; }
+
+.content-header .box-title {color: #00b7d7; font-weight: 600;}
+.box-body span {color: #1c5d83; font-weight: 600;}
+.box-body .form-group {text-align: center !important;}
+.box-body textarea {border-radius: 5px; width: 80%; margin-left: auto; margin-right: auto;  margin-top: 2%;}
+.box-body form {margin-top: 5%;}
+.box-footer {border: none !important;}
+.box-footer .btnTeguio{padding: 1%; padding-left: 3%; padding-right: 3%; margin-top: 0;}
+
+.review-block-name a i {margin-right: 1%;}
+.review-block-name.respuestas-post a {color: #1c5d83 !important;}
+.review-block .label.label-default {background-color: #b0f3ff !important; color: #1c5d83 !important;}
+.review-block .row:first-child {background: #fff !important;}
+.review-block .row:first-child .col-sm-6 {color: #1c5d83;} 
+.review-block .row:first-child + hr {border-color: #438eb9;}
+.review-block-description strong {vertical-align: middle;}
+
+/********** Perfil ***********/
+#boxPerfil {padding-top: 2%;}
+#boxPerfil form {padding: 5%; padding-top: 2%;}
+#boxPerfil form .form-group:first-child label {color: #00b7d7; font-weight: 600; font-size: large;}
+#boxPerfil form .form-group input[type= "text"] {border-radius: 5px !important;}
+#boxPerfil .btn.btn-warning.btn-xs {border-radius: 15px;}
+#boxPerfil .btn.btn-warning.btn-xs:hover, #boxPerfil .btn.btn-warning.btn-xs:focus, #boxPerfil .btn.btn-warning.btn-xs:active,
+#boxPerfil .btn.btn-warning.btn-xs:active:focus {background: #00b7d7; border-color: #fff;}
+
+/********** Usuarios a cargo ***********/
+#usuariosAcargo #agregarDependiente {padding: 1%; margin-top: 2%; margin-bottom: 2%; }
+#usuariosAcargo #agregarDependiente:hover, #usuariosAcargo #agregarDependiente:focus, #usuariosAcargo #agregarDependiente:active,
+#usuariosAcargo #agregarDependiente:active:focus {color: #fff; background: #1c5d83;}
+#usuariosAcargo .content .separated + p {margin-top: 5%; color: #1c5d83; font-weight: 600;}
+#usuariosAcargo .box.box-primary {margin-top: 5%;}
+#usuariosAcargo .table th, #usuariosAcargo .pagination {color: #1c5d83; font-weight: 600; }
+#usuariosAcargo .table .btn.btn-warning.btn-xs, #usuariosAcargo .table .btn.btn-danger.btn-xs {background: none; border: none;}
+#usuariosAcargo .table .btn.btn-warning.btn-xs:hover {border: none; }
+
+#nuevoUsuarioAcargo .box.box-primary .box-header label, #editarUsuarioAcargo .box.box-primary .box-header label,
+#cvUsuarioAcargo .box.box-primary .box-header label {color: #1c5d83; font-weight: 600; font-size: large; }
+#nuevoUsuarioAcargo .box.box-primary form .form-group span, #editarUsuarioAcargo .box.box-primary form .form-group span,
+#cvUsuarioAcargo .box.box-primary form .form-group span {margin-bottom: 0;}
+#nuevoUsuarioAcargo .box.box-primary form .form-group textarea, #editarUsuarioAcargo .box.box-primary form .form-group textarea,
+#cvUsuarioAcargo .box.box-primary form .form-group textarea {margin-top: 0;}
+#editarUsuarioAcargo .box-body label {color: #00b7d7; font-weight: 600;} 
+
+/********** Validar ***********/
+#content-validar .validarPregunta {color: #00b7d7;}
+#content-validar .validarRespuesta {color: #1c5d83;}
+#content-validar .btn.btn-warning.btn-sm span.glyphicon, #content-validar .btn.btn-danger.btn-sm span.glyphicon {color: #fff; }
+#content-validar .btn.btn-warning.btn-sm {background-color: rgba(15, 202, 15, 0.58) !important; border-radius: 20px;}
+#content-validar .btn.btn-danger.btn-sm {background-color: rgba(224, 61, 47, 0.58); border-radius: 20px;}
+#content-validar .btn.btn-warning.btn-sm:hover {border-color: green;}
+#content-validar .btn.btn-danger.btn-sm:hover {border-color: red;}

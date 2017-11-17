@@ -83,11 +83,11 @@
 			        </div>
 			        <div class="second-bar">
 			           <div class="container">
-			                <h2 class="logo"><a href="#"> TeGuio </a></h2>
+			                <h2 class="logo"><a href="http://localhost/TeGuio/"> TeGuio </a></h2>
 			                <div class="social-icons">
-			                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-			                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-			                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+			                    <a href="https://twitter.com/teguioautismo" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+			                    <a href="https://www.facebook.com/teguioautismo" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+			                    <a href="mailto:teguioautismo@gmail.com?Subject=Consulta" class="google"><i class="fa fa-envelope"></i></a>
 			                </div>
 			            </div>
 			        </div>

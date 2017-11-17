@@ -1,5 +1,5 @@
 <div class="features-container section-container">
-    <div class="container">
+    <div class="container" id="editarUsuarioAcargo">
         <section class="content-header" style="padding-top:74px">
             <ol class="breadcrumb">
                <li class="active"><a href="<?=Router::url('/usuariojr',true)?>">Usuario Jr</a></li>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="box-footer" >
-                        <button type="submit" class="btn btn-primary">Modificar</button>
+                        <button type="submit" class="btnTeguio">Modificar</button>
                     </div>
                  </form>
                 </div>

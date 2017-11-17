@@ -27,7 +27,12 @@
                     <table class="table table-hover">
                       <tbody>
                         <?php foreach($items as $item): ?>
-                         <a href="#" style="color: #a62594;"> <li class="list-group-item list-group-item-warning" style="background-color: "><span action-redirect btn-controller='foro' btn-action='verforo' btn-data="<?=$item[$model]['id']?>"><?=$item[$model]['descripcion']?></span></li></a>
+                         <a href="#" style="color: #a62594;"> 
+						<li class="list-group-item list-group-item-warning" style="background-color: ">
+							<i class="fa fa-question-circle" aria-hidden="true"></i>
+							<span action-redirect btn-controller='foro' btn-action='verforo' btn-data="<?=$item[$model]['id']?>"><?=$item[$model]['descripcion']?></span>
+						 </li>
+						 </a>
                         <?php endforeach; ?>
                       </tbody>
                     </table>
@@ -77,7 +82,7 @@
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-              <input type="submit" id="enviar-registro"  class="btn btn-primary" value="Enviar" />
+              <input type="submit" id="enviar-registro"  class="btnTeguio" value="Enviar" />
           </div>
           <div class="col-md-2"></div>
         </div>
