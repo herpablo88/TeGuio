@@ -8,9 +8,9 @@
         </section>
 
             <!-- Main content -->
-        <section class="content ">
+        <section class="content " id="contAdminListUsuariosJr">
             <div class="separated">
-                <a class="btn btn-default btn-flat"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'),true)?>"><?php echo __('+ Agregar ');?></a>
+                <a class="btnTeguio" href="<?=Router::url(array('action'=>'add'),true)?>"><?php echo __('+ Agregar ');?></a>
             </div>
 
             <?php if (empty($items)):

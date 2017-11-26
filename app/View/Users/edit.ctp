@@ -6,13 +6,13 @@
             </ol>
             <h3 class="box-title">Usuarios</h3>
         </section>
-        <section class="content row">
+        <section class="content row" id="contModifUsuario">
             <div class="col-sm-12">
                 <div class="box box-primary">
                 <div class="box-header with-border" style="text-align: left">
                      <label for="exampleInputEmail1">Modificar usuario</label>
                 </div>
-                <form role="form" action="" method="post"  enctype="multipart/form-data">
+                <form role="form" action="" method="post"  enctype="multipart/form-data" class="formAdminModifUsuario">
                     <div class="box-body">
                         <div class="col-md-12">
 
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="box-footer" >
-                        <button type="submit" class="btn btn-primary">Modificar</button>
+                        <button type="submit" class="btnTeguio">Modificar</button>
                     </div>
                  </form>
                 </div>

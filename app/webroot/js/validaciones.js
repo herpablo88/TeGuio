@@ -1,6 +1,56 @@
 ﻿/********** Validación de formularios **********/
 $(document).ready(function() {
     
+	//Validaciones - Modificar perfil
+		$('.formAdminModifUsuario')
+        .on('init.field.fv', function(e, data) {
+            
+            var $parent = data.element.parents('.form-group'),
+                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+            $icon.on('click.clearing', function() {
+                if ($icon.hasClass('glyphicon-remove')) {
+                    data.fv.resetField(data.element);
+                }
+            });
+        })
+		.formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+				nombre: {
+                    validators: {
+                        notEmpty: { message: 'El nombre es requerido' },
+						stringLength: { min: 3, max: 50, message: 'El nombre debe tener entre 3 y 50 caracteres' }
+                    }
+                },
+				apellido: {
+                    validators: {
+                        notEmpty: { message: 'El apellido es requerido' },
+						stringLength: { min: 3, max: 50, message: 'El apellido debe tener entre 3 y 50 caracteres' }
+                    }
+                },
+				email: {
+                    validators: {
+                        notEmpty: { message: 'El email es requerido' },
+						emailAddress: { message: 'Ingrese un email válido' }
+                    }
+                },
+				fk_tipo: {
+                    validators: {
+                        notEmpty: { message: 'El tipo es requerido' },
+						integer: { message: 'Tipo debe ser un numero' },
+						between: { min: 1, max: 3, message: '1.Admin - 2.Usuario - 3.Profesional' }
+
+                    }
+                }
+            }
+        });
+	
 	//Validaciones - Nuevo Post
 		$('.formAgregarPost')
         .on('init.field.fv', function(e, data) {
@@ -105,7 +155,6 @@ $(document).ready(function() {
                         notEmpty: { message: 'El DNI es requerido' },
                         integer: { message: 'DNI debe ser un numero' },
 						stringLength: { min: 8, max: 8, message: 'El dni debe tener 8 caracteres' }
-
                     }
 				},
 				password: {

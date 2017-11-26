@@ -338,3 +338,23 @@ ul.navbar-nav li #user-name {color: #00b7d7;}
 
 /********** Busqueda CV - Detalle ***********/
 #contBusquedaCVDetalle label {color: #1c5d83; font-weight: 600;}
+
+/********** Admin - Lista de Usuarios ***********/
+#contAdminListUsers .table th, #contAdminListUsers .pagination {color: #1c5d83; font-weight: 600; }
+#contAdminListUsers #btnAdmin {color: #fff !important; border-radius: 5px; border: none; }
+#contAdminListUsers .table .btn.btn-warning.btn-xs, #contAdminListUsers .table .btn.btn-danger.btn-xs {background: none; border: none; font-size: medium;}
+
+/********** Admin - Editar Usuarios ***********/
+#contModifUsuario .box.box-primary label {color: #1c5d83; }
+
+/********** Admin - Lista de Personas a cargo ***********/
+#contAdminListUsuariosJr p {margin-top: 5%;}
+#contAdminListUsuariosJr .box.box-primary {margin-top: 5%;}
+#contAdminListUsuariosJr .btnTeguio {padding: 1%;}
+#contAdminListUsuariosJr .btnTeguio:hover, #contAdminListUsuariosJr .btnTeguio:focus, #contAdminListUsuariosJr .btnTeguio:active,
+#contAdminListUsuariosJr .btnTeguio:active:focus {color: #fff; background-color: #1c5d83;}
+#contAdminListUsuariosJr .table th, #contAdminListUsuariosJr .pagination {color: #1c5d83; font-weight: 600; }
+#contAdminListUsuariosJr .table td span {background: none; color: #1c5d83; font-size: medium; font-weight: 600; } 
+
+/********** Admin - Ver CV ***********/
+#contentAdminVerCV label {color: #1c5d83; }

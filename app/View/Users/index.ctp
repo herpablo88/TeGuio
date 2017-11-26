@@ -8,7 +8,7 @@
         </section>
 
             <!-- Main content -->
-        <section class="content ">
+        <section class="content " id="contAdminListUsers">
 
             <?php if (empty($items)):
             print('<p>No hay resultados para mostrar.</p>');
@@ -40,7 +40,7 @@
                                    }?>
                             <?php } ?> 
                         </td>
-                        <td><span class="btn btn-info" action-redirect btn-controller='usuariojr' btn-action='listaUsuariosJr' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon glyphicon-search'> PERSONAS A CARGO</span></span></td>
+                        <td><span class="btn btn-info" id="btnAdmin" action-redirect btn-controller='usuariojr' btn-action='listaUsuariosJr' btn-data="<?=$item[$model]['id']?>"><span class='glyphicon glyphicon-search'> PERSONAS A CARGO</span></span></td>
                         <td>
                         <span class="btn btn-warning btn-xs" action-redirect btn-controller='users' btn-action='edit' btn-data="<?=$item[$model]['id']?>"><span class='fa fa-pencil'></span></span>
 
