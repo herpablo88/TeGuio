@@ -29,8 +29,3 @@
 	<img src="<?=Router::url('/img/notfound.png',true)?>"  class="img-responsive" style="margin-top: 5%; margin-left: auto; margin-right: auto;"> 
 </div>
 
-<?php
-if (Configure::read('debug') > 0):
-	echo $this->element('exception_stack_trace');
-endif;
-?>
