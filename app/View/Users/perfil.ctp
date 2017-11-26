@@ -15,7 +15,7 @@
 					<label for="exampleInputEmail1">VER/CARGAR PERSONAS A CARGO</label>
 				</div>
                 <?php }  ?> 
-                <form role="form" action="" method="post"  enctype="multipart/form-data">
+                <form role="form" action="" method="post"  enctype="multipart/form-data"  id="formModifPerfil">
                     <div class="box-body">
                         <div class="col-md-12">
 

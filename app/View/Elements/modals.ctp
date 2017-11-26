@@ -135,7 +135,8 @@
         <?php 
           echo $this->Form->create(null, array(
               'url' => array('controller' => 'Users', 'action' => 'register'),
-              'id' => 'particularForm'
+              'id' => 'particularForm',
+			  'class' => 'formRegProfesional'
             )
           );
         ?>
