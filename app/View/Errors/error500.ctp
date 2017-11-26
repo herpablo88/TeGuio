@@ -15,10 +15,7 @@
  */
 ?>
 <h2><?php echo $message; ?></h2>
-<p class="error">
-	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
-	<?php echo __d('cake', 'An Internal Error Has Occurred.'); ?>
-</p>
+
 
 <div class="container">
 	<h1 style="color: #00b7d7; font-weight: 600;"> Ha ocurrido un error </h1>
