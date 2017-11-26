@@ -111,7 +111,7 @@ $(document).ready(function() {
 				password: {
                     validators: {
                         notEmpty: { message: 'La contraseña es requerida' },
-						stringLength: { min: 6, message: 'El apellido debe tener 6 o más caracteres' }
+						stringLength: { min: 6, message: 'La contraseña debe tener 6 o más caracteres' }
                     }
                 },
 				confirmaPassword: {
