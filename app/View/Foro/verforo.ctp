@@ -103,7 +103,7 @@
             <?php  } ?>  
             </div>
           </div>
-          <form role="form" action="" method="post"  enctype="multipart/form-data">
+          <form role="form" action="" method="post"  enctype="multipart/form-data" class="formResponderPost">
             <div class="box-body">
                <div class="col-md-12">
                   <div class="form-group" style="text-align: -webkit-left;" >

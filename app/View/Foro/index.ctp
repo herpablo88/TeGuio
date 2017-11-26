@@ -63,6 +63,7 @@
         <?php 
           echo $this->Form->create(null, array(
               'url' => array('controller' => 'Foro', 'action' => 'add'),
+			  'class' => 'formAgregarPost',
               
             )
           );

@@ -1,6 +1,65 @@
 ﻿/********** Validación de formularios **********/
 $(document).ready(function() {
     
+	//Validaciones - Nuevo Post
+		$('.formAgregarPost')
+        .on('init.field.fv', function(e, data) {
+            
+            var $parent = data.element.parents('.form-group'),
+                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+            $icon.on('click.clearing', function() {
+                if ($icon.hasClass('glyphicon-remove')) {
+                    data.fv.resetField(data.element);
+                }
+            });
+        })
+		.formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                descripcion: {
+                    validators: {
+                        notEmpty: { message: 'Escriba su consulta' },
+						stringLength: { min: 15, message: 'Debe ingresar 15 o más caracteres' }
+                    }
+                }
+            }
+        });
+		
+	//Validaciones - Nuevo Post
+		$('.formResponderPost')
+        .on('init.field.fv', function(e, data) {
+            
+            var $parent = data.element.parents('.form-group'),
+                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+            $icon.on('click.clearing', function() {
+                if ($icon.hasClass('glyphicon-remove')) {
+                    data.fv.resetField(data.element);
+                }
+            });
+        })
+		.formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                descripcion: {
+                    validators: {
+                        notEmpty: { message: 'Escriba su comentario' },
+						stringLength: { min: 15, message: 'Debe ingresar 15 o más caracteres' }
+                    }
+                }
+            }
+        });
 	
 	//Validaciones - Registrar Profesional
 	$('.formRegProfesional')
