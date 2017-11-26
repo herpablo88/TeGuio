@@ -84,6 +84,12 @@
         
                 <input type="password" id="password" class="form-control" name="password" placeholder="contraseña" />
               </div>
+			  
+			  <label for="confirmaPassword">Confirmar Contraseña</label>
+              <div class="form-group">
+        
+                <input type="password" id="confirmaPassword" class="form-control" name="confirmaPassword" placeholder="contraseña" />
+              </div>
             
               <label for="nombre">Nombre</label>
               <div class="form-group">
@@ -160,6 +166,12 @@
               <div class="form-group">
         
                 <input type="password" id="password" class="form-control" name="password" placeholder="contraseña" />
+              </div>
+			  
+			  <label for="confirmaPassword">Confirmar Contraseña</label>
+              <div class="form-group">
+        
+                <input type="password" id="confirmaPassword" class="form-control" name="confirmaPassword" placeholder="contraseña" />
               </div>
             
               <label for="nombre">Nombre</label>
