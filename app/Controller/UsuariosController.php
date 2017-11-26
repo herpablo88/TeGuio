@@ -18,7 +18,7 @@ class UsuariosController extends AppController {
        
 
      public function index(){
-    
+    	
       $model = $this->modelClass;
 
       $this->Paginator->settings = array(

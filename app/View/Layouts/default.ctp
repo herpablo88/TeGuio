@@ -63,16 +63,16 @@
 			                <div class="col-sm-3">
 			                    <h5>Datos &uacute;tiles</h5>
 			                    <ul>
-			                        <li><a href="http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1561-31942015000100019">Autismo: un acercamiento hacia el diagn&oacute;stico y la gen&eacute;tica</a></li>
-			                        <li><a href="http://www.lanacion.com.ar/1919944-autismo-en-la-escuela-ya-se-puede-hablar-de-inclusion">Autismo en la escuela: ya se puede hablar de inclusi&oacute;n?</a></li>
+			                        <li><a href="http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1561-31942015000100019" target="_blank">Autismo: un acercamiento hacia el diagn&oacute;stico y la gen&eacute;tica</a></li>
+			                        <li><a href="http://www.lanacion.com.ar/1919944-autismo-en-la-escuela-ya-se-puede-hablar-de-inclusion" target="_blank">Autismo en la escuela: ya se puede hablar de inclusi&oacute;n?</a></li>
 			                    </ul>
 			                </div>
 			                <div class="col-sm-3">
 			                    <h5>ONG's</h5>
 			                    <ul>
-			                        <li><a href="http://apadea.org.ar/">Apadea</a></li>
-			                        <li><a href="http://www.panaacea.org/">Panaacea</a></li>
-			                        <li><a href="http://www.brincar.org.ar/">Brincar</a></li>
+			                        <li><a href="http://apadea.org.ar/" target="_blank">Apadea</a></li>
+			                        <li><a href="http://www.panaacea.org/" target="_blank">Panaacea</a></li>
+			                        <li><a href="http://www.brincar.org.ar/" target="_blank">Brincar</a></li>
 			                    </ul>
 			                </div>
 			                <div class="col-sm-3 info">

@@ -19,7 +19,7 @@
 
 <div class="container">
 	<h1 style="color: #00b7d7; font-weight: 600;"> Error 404 </h1>
-	<h2 style="color: #1c5d83;"> Pagina no encontrada </h2>
+	<h2 style="color: #1c5d83;"> Página no encontrada </h2>
 	<img src="<?=Router::url('/img/notfound.png',true)?>"  class="img-responsive" style="margin-top: 5%; margin-left: auto; margin-right: auto;"> 
 </div>
 

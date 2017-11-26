@@ -48,6 +48,16 @@ class UsersController extends AppController {
    
     public function index(){
    
+     if (! $this->Auth->login()) {  
+				$this->Session->setFlash('Debe loguearse', 'alert-error');
+                return $this->redirect(Router::url('/', true));
+            }
+		else{
+			if ( $this->Auth->User()['fk_tipo'] != '1') {  
+					$this->Session->setFlash('Solo un administrador puede acceder', 'alert-error');
+					return $this->redirect(Router::url('/', true));
+				}
+		}
       $model = $this->modelClass;
 
       $this->Paginator->settings = array(
@@ -265,7 +275,7 @@ class UsersController extends AppController {
             }
 
             if (!empty($guardar)) {
-                $this->Session->setFlash('REGISTRO EXITOSO en TEGUIO,inclusion autismo', 'alert');
+                $this->Session->setFlash('REGISTRO EXITOSO en TEGUIO, Inclusión Autismo', 'alert');
                 return $this->redirect(Router::url('/', true));
             }
 
@@ -284,6 +294,12 @@ class UsersController extends AppController {
 				$this->Session->setFlash('Debe loguearse', 'alert-error');
                 return $this->redirect(Router::url('/', true));
             }
+	else{
+		if ( $this->Auth->User()['fk_tipo'] != '3') {  
+				$this->Session->setFlash('Solo un profesional puede acceder', 'alert-error');
+                return $this->redirect(Router::url('/', true));
+            }
+	}
 	
       $model = $this->modelClass;
       $this->loadModel('Preguntas');
