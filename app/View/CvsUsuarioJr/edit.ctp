@@ -14,7 +14,7 @@
                                  <label for="exampleInputEmail1">DNI <?=$item[$model]['id']?></label>
                      </div>
                 </div>
-                <form role="form" action="" method="post"  enctype="multipart/form-data">
+                <form role="form" action="" method="post"  enctype="multipart/form-data" id="formCVUC">
                     <div class="box-body">
                         <div class="col-md-12">
 

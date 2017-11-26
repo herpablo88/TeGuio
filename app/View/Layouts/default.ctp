@@ -108,6 +108,7 @@
                   echo $this->Html->script('jquery.growl');
                   echo $this->Html->script('../plugins/pace/pace');
                   echo $this->Html->script('main');
+				  echo $this->Html->script('validaciones');
                   echo $this->fetch('script');
                   echo $this->Session->flash();
             ?>

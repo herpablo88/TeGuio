@@ -12,7 +12,7 @@
                 <div class="box-header with-border" style="text-align: left">
                      <label for="exampleInputEmail1">Nuevo Usuario a cargo</label>
                 </div>
-                <form role="form" action="" method="post"  enctype="multipart/form-data">
+                <form role="form" action="" method="post"  enctype="multipart/form-data" id="formUCAdd">
                     <div class="box-body">
                        <div class="col-md-12">
                             <div class="form-group" style="text-align: -webkit-left;" >
