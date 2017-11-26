@@ -1,5 +1,9 @@
 <?php
 
+App::uses('Component', 'Controller');
+App::uses('AppController', 'Controller');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+
 class ForoController extends AppController {
 
   public function beforeFilter(){
@@ -11,6 +15,11 @@ class ForoController extends AppController {
 
   public function index(){
     
+	if (! $this->Auth->login()) {  
+				 $this->Session->setFlash('Debe loguearse', 'alert-error');
+                return $this->redirect(Router::url('/', true));
+            }
+			
     $model = $this->modelClass;
     $this->Paginator->settings = array(
           'limit' => $this->defaultLimit() ,

@@ -280,6 +280,11 @@ class UsersController extends AppController {
 
     public function validar(){
     
+	if (! $this->Auth->login()) {  
+				$this->Session->setFlash('Debe loguearse', 'alert-error');
+                return $this->redirect(Router::url('/', true));
+            }
+	
       $model = $this->modelClass;
       $this->loadModel('Preguntas');
       $this->loadModel('Respuestas');

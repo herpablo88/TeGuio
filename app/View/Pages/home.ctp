@@ -62,7 +62,8 @@
 	                			 <img src="<?=Router::url('/img/chatbox.png',true)?>" style="display:inline-table" class="navbar-logo img-responsive">
 	                		</div>
 	                		<div class="col-sm-8">
-	                			<h3>Chatbot</h3>
+	                			<a href="http://localhost/TeGuio">
+								<h3>Chatbot</h3></a>
 		                    	<p>
 		                    		 Qu&eacute; es un <b>Chatbot</b>? Es una ayuda virtual dedicada a interpretar y responder consultas. En nuestro caso &eacute;ste servicio se pone a disposici&oacute;n
 		                    		 de los usuarios para poder responder r&aacute;pidamente ante situaciones de crisis. Contale qu&eacute; est&aacute; pasando y veamos qu&eacute; tiene para decir!
@@ -94,7 +95,8 @@
 	                			<img src="<?=Router::url('/img/foro.jpg',true)?>" style="display:inline-table" class="navbar-logo img-responsive">
 	                		</div>
 	                		<div class="col-sm-8">
-	                			<h3>Foro</h3>
+	                			<a href="http://localhost/TeGuio/foro">
+								<h3>Foro</h3> </a>
 		                    	<p>
 		                    		 Alguna vez quisiste poder preguntar y no sab&iacute;s d&oacute;nde? Ac&aacute; armamos un esp&aacute;cio para que las personas que interact&uacute;an 
 		                    		 con personas con autismo puedan intercambiar ideas, compartir opiniones y realizar consultas, pudiendo fomentar la comunicaci&oacute;n entre toda la comnunidad! 
@@ -108,7 +110,8 @@
 	                			<img src="<?=Router::url('/img/cv.png',true)?>"  class="navbar-logo img-responsive" style="display:inline-table">
 	                		</div>
 	                		<div class="col-sm-8">
-	                			<h3>Bolsa de Trabajo</h3>
+								<a href="http://localhost/TeGuio/busquedaCv">
+								<h3>Bolsa de Trabajo</h3> </a>
 		                    	<p>
 		                    		Un lugar donde se pueden buscar personas con autismo, sus capacidades y conocimientos, ayudar a la integraci&oacute;n e inclusi&oacute;n laboral.
 		                    	</p>
