@@ -1,18 +1,18 @@
 <div class="features-container section-container">
-    <div class="container">
+    <div class="container" >
         <section class="content-header" style="padding-top:74px">
             <ol class="breadcrumb">
                <li class="active"><a href="<?=Router::url('/Usuariojr',true)?>">Busqueda Perfil</a></li>
             </ol>
-            <h4 class="box-title">Encuentre el perfil para su puesto</h4>
+            <h3 class="box-title">Encuentre el perfil para su puesto</h3>
         </section>
        
             <!-- Main content -->
-        <section class="content ">
+        <section class="content " id="contBusquedaCVs">
             <div class="separated">
               <form role="form" action="" method="post"  enctype="multipart/form-data">
-               Busco Conocimientos en: <input type="text"  id="string"  name="string" >
-               <button type="submit"  class="btn btn-warning btn" style="background-color: #57c3af;" >Filtrar </button>
+               <span class="desc">Busco Conocimientos en:</span> <input type="text"  id="string"  name="string" >
+               <button type="submit"  class="btnTeguio">Filtrar </button>
                </form>
             </div>
             <?php if (empty($items)):
@@ -26,7 +26,7 @@
                 <table class="table table-hover">
                     <tbody>
                         <tr>
-                            <th>Listado Cv</th>
+                            <th class="tituloBusqCV">Listado Cv</th>
                           
                         </tr>
 

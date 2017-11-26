@@ -324,3 +324,17 @@ ul.navbar-nav li #user-name {color: #00b7d7;}
 #content-validar .btn.btn-danger.btn-sm {background-color: rgba(224, 61, 47, 0.58); border-radius: 20px;}
 #content-validar .btn.btn-warning.btn-sm:hover {border-color: green;}
 #content-validar .btn.btn-danger.btn-sm:hover {border-color: red;}
+
+/********** Busqueda CV ***********/
+#contBusquedaCVs .tituloBusqCV {color: #1c5d83 !important; font-weight: 600; font-size: large;}
+#contBusquedaCVs .pagination {color: #1c5d83; font-weight: 600; }
+#contBusquedaCVs .btn.btn-warning.btn-xs {background-color: #1c5d83; color: #fff; padding-left: 5%; padding-right: 5%; border-radius: 5px;}
+#contBusquedaCVs .btn.btn-warning.btn-xs:hover, #contBusquedaCVs .btn.btn-warning.btn-xs:focus, #contBusquedaCVs .btn.btn-warning.btn-xs:active,
+#contBusquedaCVs .btn.btn-warning.btn-xs:active:focus {background-color: #00b7d7; }
+#contBusquedaCVs .box.box-primary {margin-top: 3%;}
+#contBusquedaCVs .btnTeguio {padding: 1%;}
+#contBusquedaCVs #string {border-radius: 5px; border: solid 1px #d2d6de; padding: 1%;}
+#contBusquedaCVs span.desc {color: #1c5d83; font-weight: 600;}
+
+/********** Busqueda CV - Detalle ***********/
+#contBusquedaCVDetalle label {color: #1c5d83; font-weight: 600;}

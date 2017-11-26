@@ -6,7 +6,7 @@
             </ol> 
             <h3 class="box-title"><strong><?=$item[$model]['nombre_post']." ".$item[$model]['apellido_post']?></strong></h3>
         </section>
-        <section class="content row">
+        <section class="content row" id="contBusquedaCVDetalle">
             <div class="col-sm-12">
                 <div class="box box-primary">
                 <div class="col-sm-12">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="box-footer" >
-                        <button type="submit" class="btn btn-primary"><a href="<?=Router::url('/busquedaCv',true)?>" style="color:white;">Volver a la Busqueda</a></button>
+                        <a href="<?=Router::url('/busquedaCv',true)?>" style="color:white;"><button  class="btnTeguio">Volver a la Busqueda</button></a>
                     </div>
                  </form>
                 </div>
