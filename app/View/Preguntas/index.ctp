@@ -8,9 +8,9 @@
         </section>
        
             <!-- Main content -->
-        <section class="content ">
+        <section class="content " id="contentHistorico">
             <div class="separated">
-                <a class="btn btn-default btn-flat"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'.'/'.$usuariojr["Usuariojr"]["id"].'/'.$user["id"]),true)?>"><?php echo __('+ Agregar ');?></a>
+                <a class="btnTeguio"  style="border-radius: 14%"href="<?=Router::url(array('action'=>'add'.'/'.$usuariojr["Usuariojr"]["id"].'/'.$user["id"]),true)?>"><?php echo __('+ Agregar ');?></a>
             </div>
 
             <?php if (empty($items)):
@@ -35,10 +35,10 @@
                         <td><?=$item[$model]['descripcion']?></td>
 
                         <td>
+
+                         <span class="btn btn-warning btn-xs addSol"  action-redirect btn-controller='preguntas' btn-action='respuestas' btn-data="<?=$item[$model]['id'].'/'.$usuariojr["Usuariojr"]["id"]?>">Añadir Solucion <span class='glyphicon glyphicon-list-alt'></span></span>
+
                         <span class="btn btn-warning btn-xs" action-redirect btn-controller='preguntas' btn-action='edit' btn-data="<?=$item[$model]['id'].'/'.$usuariojr["Usuariojr"]["id"]?>"><span class='fa fa-pencil'></span></span>
-
-                         <span class="btn btn-warning btn-xs" style="background-color: #57c3af;" action-redirect btn-controller='preguntas' btn-action='respuestas' btn-data="<?=$item[$model]['id'].'/'.$usuariojr["Usuariojr"]["id"]?>">Añadir Solucion <span class='glyphicon glyphicon-list-alt'></span></span>
-
 
                         <span class="btn btn-danger btn-xs"
                         action-modal='true'

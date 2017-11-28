@@ -1,5 +1,95 @@
 ﻿/********** Validación de formularios **********/
 $(document).ready(function() {
+	
+	//Validaciones - Agregar Solucion-Historico 
+		$('#formAddRespHistorico')
+        .on('init.field.fv', function(e, data) {
+            
+            var $parent = data.element.parents('.form-group'),
+                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+            $icon.on('click.clearing', function() {
+                if ($icon.hasClass('glyphicon-remove')) {
+                    data.fv.resetField(data.element);
+                }
+            });
+        })
+		.formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                descripcion: {
+                    validators: {
+                        notEmpty: { message: 'Ingrese solución' },
+						stringLength: { min: 10, message: 'Debe ingresar 10 o más caracteres' }
+                    }
+                }
+            }
+        });
+		
+	//Validaciones - Edit Historico
+		$('#formEditSolHistorico')
+        .on('init.field.fv', function(e, data) {
+            
+            var $parent = data.element.parents('.form-group'),
+                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+            $icon.on('click.clearing', function() {
+                if ($icon.hasClass('glyphicon-remove')) {
+                    data.fv.resetField(data.element);
+                }
+            });
+        })
+		.formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                descripcion: {
+                    validators: {
+                        notEmpty: { message: 'Ingrese el factor de crisis' },
+						stringLength: { min: 10, message: 'Debe ingresar 10 o más caracteres' }
+                    }
+                }
+            }
+        });	
+	
+	//Validaciones - Agregar Historico
+		$('#formAddHistorico')
+        .on('init.field.fv', function(e, data) {
+            
+            var $parent = data.element.parents('.form-group'),
+                $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+
+            $icon.on('click.clearing', function() {
+                if ($icon.hasClass('glyphicon-remove')) {
+                    data.fv.resetField(data.element);
+                }
+            });
+        })
+		.formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                descripcion: {
+                    validators: {
+                        notEmpty: { message: 'Ingrese el factor de crisis' },
+						stringLength: { min: 10, message: 'Debe ingresar 10 o más caracteres' }
+                    }
+                }
+            }
+        });
     
 	//Validaciones - Modificar perfil
 		$('.formAdminModifUsuario')

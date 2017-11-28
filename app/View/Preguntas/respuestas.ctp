@@ -27,7 +27,7 @@
           <?php  } ?>
           
           </div>
-          <form role="form" action="" method="post"  enctype="multipart/form-data">
+          <form role="form" action="" method="post"  enctype="multipart/form-data" id="formAddRespHistorico">
             <div class="box-body">
                <div class="col-md-12">
                   <div class="form-group" style="text-align: -webkit-center;" >
@@ -38,8 +38,8 @@
                 </div>
             </div>
             <div class="box-footer"  style="text-align: -webkit-center;">
-                <button type="submit" class="btn btn-primary">Añadir Solucion</button>
-                <button type="submit" class="btn btn-primary"><a style="color:white;" href="<?=Router::url('/preguntas/index/'.$id_usuariojr,true)?>">Volver al Listado</a></button>
+                <button type="submit" class="btnTeguio">Añadir Solucion</button>
+                <button class="btnTeguio"><a style="color:white;" href="<?=Router::url('/preguntas/index/'.$id_usuariojr,true)?>">Volver al Listado</a></button>
               
             </div>
           </form>

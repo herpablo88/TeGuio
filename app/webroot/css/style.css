@@ -358,3 +358,18 @@ ul.navbar-nav li #user-name {color: #00b7d7;}
 
 /********** Admin - Ver CV ***********/
 #contentAdminVerCV label {color: #1c5d83; }
+
+/********** Historico ***********/
+#contentHistorico .btnTeguio {padding: 1%;}
+#contentHistorico .btnTeguio:hover, #contentHistorico .btnTeguio:focus, #contentHistorico .btnTeguio:active,
+#contentHistorico .btnTeguio:active:focus {color: #fff; background-color: #1c5d83;}
+#contentHistorico .box.box-primary, #contentHistorico p {margin-top: 5%;}{margin-top: 5%;}
+#contentHistorico .table th, #contentHistorico .pagination {color: #1c5d83; font-weight: 600; }
+#contentHistorico .table .btn.btn-warning.btn-xs, #contentHistorico .table .btn.btn-danger.btn-xs {background: none; border: none; font-size: medium;}
+#contentHistorico .addSol {color: #1c5d83 !important; border: #1c5d83 solid 1px !important; background: none !important; margin-left: 1%;} 
+
+/********** Historico - Agregar ***********/
+#contAddHistorico .box.box-primary label {color: #1c5d83; }
+
+/********** Historico - Editar ***********/
+#contEditHistorico label {color: #1c5d83; }

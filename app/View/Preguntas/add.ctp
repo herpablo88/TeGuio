@@ -1,5 +1,5 @@
 <div class="features-container section-container">
-    <div class="container">
+    <div class="container" id="contAddHistorico">
         <section class="content-header" style="padding-top:74px">
             <ol class="breadcrumb">
                <li class="active"><a href="<?=Router::url('/preguntas',true)?>">Preguntas</a></li>
@@ -12,7 +12,7 @@
                 <div class="box-header with-border" style="text-align: left">
                      <label for="exampleInputEmail1">Nuevo factor</label>
                 </div>
-                <form role="form" action="" method="post"  enctype="multipart/form-data">
+                <form role="form" action="" method="post"  enctype="multipart/form-data" id="formAddHistorico">
                     <div class="box-body">
                        <div class="col-md-12">
                            <div class="form-group" style="text-align: -webkit-left;" >
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="box-footer" >
-                        <button type="submit" class="btn btn-primary">Agregar</button>
+                        <button type="submit" class="btnTeguio">Agregar</button>
                     </div>
                 </form>
                 </div>
